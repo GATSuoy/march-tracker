@@ -3,623 +3,643 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>المسيرة</title>
+<title>MARCH STATES</title>
 <style>
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-    background: #1c1c1e;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    padding: 16px;
-    min-height: 100vh;
-  }
-  .app { width: 100%; max-width: 440px; }
-  h1 {
-    font-size: 18px;
-    text-align: center;
-    margin: 4px 0 16px;
-    color: #ccc;
-    font-weight: 600;
-  }
-  .card {
-    background: #2c2c2e;
-    border-radius: 16px;
-    padding: 16px;
-    margin-bottom: 14px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-  }
-  label {
-    display: block;
-    font-size: 13px;
-    color: #aaa;
-    margin-bottom: 5px;
-  }
-  input[type="text"], input[type="number"] {
-    width: 100%;
-    padding: 10px 11px;
-    border-radius: 10px;
-    border: 1px solid #3a3a3c;
-    background: #1c1c1e;
-    color: #fff;
-    font-size: 15px;
-    margin-bottom: 10px;
-  }
-  input:focus { outline: none; border-color: #0a84ff; }
-  input::placeholder { color: #666; opacity: 1; }
-  input[readonly] { color: #9ecbff; background: #1a1a1c; }
+ * { box-sizing: border-box; }
+ body {
+ margin: 0;
+ font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+ background: #1c1c1e;
+ color: #fff;
+ display: flex;
+ justify-content: center;
+ padding: 16px;
+ min-height: 100vh;
+ }
+ .app { width: 100%; max-width: 440px; }
+ h1 {
+ font-size: 18px;
+ text-align: center;
+ margin: 4px 0 16px;
+ color: #ccc;
+ font-weight: 600;
+ }
+ .card {
+ background: #2c2c2e;
+ border-radius: 16px;
+ padding: 16px;
+ margin-bottom: 14px;
+ box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+ }
+ label {
+ display: block;
+ font-size: 13px;
+ color: #aaa;
+ margin-bottom: 5px;
+ }
+ input[type="text"], input[type="number"] {
+ width: 100%;
+ padding: 10px 11px;
+ border-radius: 10px;
+ border: 1px solid #3a3a3c;
+ background: #1c1c1e;
+ color: #fff;
+ font-size: 16px;
+ margin-bottom: 10px;
+ }
+ input:focus { outline: none; border-color: #0a84ff; }
+ input::placeholder { color: #666; opacity: 1; }
+ input[readonly] { color: #9ecbff; background: #1a1a1c; }
 
-  select {
-    width: 100%;
-    padding: 10px 11px;
-    border-radius: 10px;
-    border: 1px solid #3a3a3c;
-    background: #1c1c1e;
-    color: #fff;
-    font-size: 15px;
-    margin-bottom: 10px;
-  }
-  select:focus { outline: none; border-color: #0a84ff; }
-  .preset-select option[value=""] { color: #666; }
-  .preset-select.is-placeholder { color: #666; }
-  .preset-select { color: #fff; }
+ select {
+ width: 100%;
+ padding: 10px 11px;
+ border-radius: 10px;
+ border: 1px solid #3a3a3c;
+ background: #1c1c1e;
+ color: #fff;
+ font-size: 16px;
+ margin-bottom: 10px;
+ }
+ select:focus { outline: none; border-color: #0a84ff; }
+ .preset-select option[value=""] { color: #666; }
+ .preset-select.is-placeholder { color: #666; }
+ .preset-select { color: #fff; }
 
-  .stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px 12px;
-  }
-  .stat-block.attack label { color: #ff3b30; }
-  .stat-block.defense label { color: #0a84ff; }
-  .stat-block.health label { color: #34c759; }
-  .stat-block.speed label { color: #ff9f0a; }
-  .stat-block.dmgup label { color: #ff375f; }
-  .stat-block.dmgdown label { color: #32d74b; }
+ .stats-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 10px 12px;
+ }
+ .stat-block.attack label { color: #ff3b30; }
+ .stat-block.defense label { color: #0a84ff; }
+ .stat-block.health label { color: #34c759; }
+ .stat-block.speed label { color: #ff9f0a; }
+ .stat-block.dmgup label { color: #ff375f; }
+ .stat-block.dmgdown label { color: #32d74b; }
 
-  .btn {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 10px;
-    background: #0a84ff;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 4px;
-  }
-  .btn:active { background: #0968cc; }
+ .btn {
+ width: 100%;
+ padding: 13px;
+ border: none;
+ border-radius: 10px;
+ background: #0a84ff;
+ color: #fff;
+ font-size: 16px;
+ font-weight: 700;
+ cursor: pointer;
+ margin-top: 4px;
+ }
+ .btn:active { background: #0968cc; }
 
-  .btn-cancel {
-    width: 100%;
-    padding: 11px;
-    border: 1px solid #555;
-    border-radius: 10px;
-    background: none;
-    color: #aaa;
-    font-size: 14px;
-    cursor: pointer;
-    margin-top: 8px;
-  }
+ .btn-cancel {
+ width: 100%;
+ padding: 11px;
+ border: 1px solid #555;
+ border-radius: 10px;
+ background: none;
+ color: #aaa;
+ font-size: 14px;
+ cursor: pointer;
+ margin-top: 8px;
+ }
 
-  .btn-delete-selected {
-    padding: 0 14px;
-    border: 1px solid #ff453a;
-    border-radius: 10px;
-    background: none;
-    color: #ff453a;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-    white-space: nowrap;
-  }
+ .btn-delete-selected {
+ padding: 0 14px;
+ border: 1px solid #ff453a;
+ border-radius: 10px;
+ background: none;
+ color: #ff453a;
+ font-size: 13px;
+ font-weight: 700;
+ cursor: pointer;
+ white-space: nowrap;
+ }
 
-  .btn-save-preset {
-    padding: 0 12px;
-    border: 1px solid #64d2ff;
-    border-radius: 10px;
-    background: none;
-    color: #64d2ff;
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
-    white-space: nowrap;
-  }
+ .btn-save-preset {
+ padding: 0 12px;
+ border: 1px solid #64d2ff;
+ border-radius: 10px;
+ background: none;
+ color: #64d2ff;
+ font-size: 12px;
+ font-weight: 700;
+ cursor: pointer;
+ white-space: nowrap;
+ }
 
-  .btn-next {
-    width: 100%;
-    padding: 11px;
-    border: none;
-    border-radius: 10px;
-    background: #232325;
-    color: #64d2ff;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 10px;
-  }
+ .btn-next {
+ width: 100%;
+ padding: 11px;
+ border: none;
+ border-radius: 10px;
+ background: #232325;
+ color: #64d2ff;
+ font-size: 14px;
+ font-weight: 700;
+ cursor: pointer;
+ margin-top: 10px;
+ }
 
-  .nav-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-top: 10px;
-  }
-  .nav-row.nav-row-single {
-    grid-template-columns: 1fr;
-  }
-  .nav-row .btn-next, .nav-row .btn-prev {
-    margin-top: 0;
-  }
-  .btn-prev {
-    width: 100%;
-    padding: 11px;
-    border: none;
-    border-radius: 10px;
-    background: #232325;
-    color: #999;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-  }
+ .nav-row {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 8px;
+ margin-top: 10px;
+ }
+ .nav-row.nav-row-single {
+ grid-template-columns: 1fr;
+ }
+ .nav-row .btn-next, .nav-row .btn-prev {
+ margin-top: 0;
+ }
+ .btn-prev {
+ width: 100%;
+ padding: 11px;
+ border: none;
+ border-radius: 10px;
+ background: #232325;
+ color: #999;
+ font-size: 14px;
+ font-weight: 700;
+ cursor: pointer;
+ }
 
-  .section-title {
-    font-size: 13px;
-    color: #888;
-    margin: 6px 0 10px;
-    padding-top: 10px;
-    border-top: 1px solid #3a3a3c;
-  }
+ .section-title {
+ font-size: 13px;
+ color: #888;
+ margin: 6px 0 10px;
+ padding-top: 10px;
+ border-top: 1px solid #3a3a3c;
+ }
 
-  .section-total-box {
-    background: #1c1c1e;
-    border: 1px solid #3a3a3c;
-    border-radius: 12px;
-    padding: 10px 12px 4px;
-    margin-top: 4px;
-  }
+ .section-total-box {
+ background: #1c1c1e;
+ border: 1px solid #3a3a3c;
+ border-radius: 12px;
+ padding: 10px 12px 4px;
+ margin-top: 4px;
+ }
 
-  .gear-item {
-    background: #232325;
-    border-radius: 12px;
-    padding: 10px 10px 2px;
-    margin-bottom: 10px;
-  }
-  .gear-name {
-    font-size: 14px;
-    color: #64d2ff;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .gear-item .stats-grid { gap: 8px 10px; }
-  .gear-item input[type="number"] {
-    padding: 8px 9px;
-    font-size: 14px;
-    margin-bottom: 8px;
-  }
-  .gear-item .stat-block label { font-size: 11px; margin-bottom: 3px; }
-  .gear-item .pct-field input[type="number"] { margin-bottom: 0; }
-  .value-chance {
-    display: flex;
-    gap: 6px;
-  }
-  .value-chance > * {
-    width: 50%;
-  }
-  .value-chance > .pct-field:only-child {
-    width: 100%;
-  }
-  .value-chance > input {
-    margin-bottom: 8px;
-  }
-  .pct-field {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    margin-bottom: 8px;
-  }
-  .pct-field input {
-    flex: 1;
-    min-width: 0;
-    margin-bottom: 0;
-  }
-  .pct-suffix {
-    color: #666;
-    font-size: 12px;
-    flex-shrink: 0;
-  }
+ .gear-item {
+ background: #232325;
+ border-radius: 12px;
+ padding: 10px 10px 2px;
+ margin-bottom: 10px;
+ }
+ .gear-name {
+ font-size: 14px;
+ color: #64d2ff;
+ font-weight: 700;
+ margin-bottom: 8px;
+ }
+ .gear-item .stats-grid { gap: 8px 10px; }
+ .gear-item input[type="number"] {
+ padding: 8px 9px;
+ font-size: 14px;
+ margin-bottom: 8px;
+ }
+ .gear-item .stat-block label { font-size: 11px; margin-bottom: 3px; }
+ .gear-item .pct-field input[type="number"] { margin-bottom: 0; }
+ .value-chance {
+ display: flex;
+ gap: 6px;
+ }
+ .value-chance > * {
+ width: 50%;
+ }
+ .value-chance > .pct-field:only-child {
+ width: 100%;
+ }
+ .value-chance >input {
+ margin-bottom: 8px;
+ }
+ .pct-field {
+ display: flex;
+ align-items: center;
+ gap: 4px;
+ margin-bottom: 8px;
+ }
+ .pct-field input {
+ flex: 1;
+ min-width: 0;
+ margin-bottom: 0;
+ }
+ .pct-suffix {
+ color: #666;
+ font-size: 12px;
+ flex-shrink: 0;
+ }
 
-  .list { margin-top: 4px; }
-  .char {
-    background: #2c2c2e;
-    border-radius: 14px;
-    padding: 14px;
-    margin-bottom: 10px;
-  }
-  .char-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  .char-name { font-size: 17px; font-weight: 700; }
-  .commander-badge {
-    font-size: 11px;
-    font-weight: 600;
-    color: #ffd60a;
-    background: #ffd60a22;
-    padding: 2px 8px;
-    border-radius: 6px;
-    margin-right: 6px;
-  }
-  .char-total {
-    font-size: 15px;
-    font-weight: 700;
-    color: #0a84ff;
-    background: #0a84ff22;
-    padding: 4px 10px;
-    border-radius: 8px;
-  }
-  .char-del {
-    background: none;
-    border: none;
-    color: #ff453a;
-    font-size: 15px;
-    cursor: pointer;
-    margin-right: 8px;
-  }
-  .char-edit {
-    background: none;
-    border: none;
-    color: #64d2ff;
-    font-size: 15px;
-    cursor: pointer;
-    margin-right: 8px;
-  }
-  .char-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-  }
-  .char-stats .mini .k { font-size: 10px; }
-  .mini {
-    background: #1c1c1e;
-    border-radius: 8px;
-    padding: 6px 4px;
-    text-align: center;
-  }
-  .mini .k { font-size: 11px; color: #888; }
-  .mini .v { font-size: 15px; font-weight: 700; }
-  .mini .chc { font-size: 10px; color: #666; margin-top: 1px; }
-  .mini.attack .v { color: #ff3b30; }
-  .mini.defense .v { color: #0a84ff; }
-  .mini.health .v { color: #34c759; }
-  .mini.speed .v { color: #ff9f0a; }
-  .mini.dmgup .v { color: #ff375f; }
-  .mini.dmgdown .v { color: #32d74b; }
+ .list { margin-top: 4px; }
+ .char {
+ background: #2c2c2e;
+ border-radius: 14px;
+ padding: 14px;
+ margin-bottom: 10px;
+ }
+ .char-head {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 10px;
+ }
+ .char-name { font-size: 17px; font-weight: 700; }
+ .commander-badge {
+ font-size: 11px;
+ font-weight: 600;
+ color: #ffd60a;
+ background: #ffd60a22;
+ padding: 2px 8px;
+ border-radius: 6px;
+ margin-right: 6px;
+ }
+ .char-total {
+ font-size: 15px;
+ font-weight: 700;
+ color: #0a84ff;
+ background: #0a84ff22;
+ padding: 4px 10px;
+ border-radius: 8px;
+ }
+ .char-del {
+ background: none;
+ border: none;
+ color: #ff453a;
+ font-size: 15px;
+ cursor: pointer;
+ margin-right: 8px;
+ }
+ .char-edit {
+ background: none;
+ border: none;
+ color: #64d2ff;
+ font-size: 15px;
+ cursor: pointer;
+ margin-right: 8px;
+ }
+ .char-stats {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 6px;
+ }
+ .char-stats .mini .k { font-size: 10px; }
+ .mini {
+ background: #1c1c1e;
+ border-radius: 8px;
+ padding: 6px 4px;
+ text-align: center;
+ }
+ .mini .k { font-size: 11px; color: #888; }
+ .mini .v { font-size: 15px; font-weight: 700; }
+ .mini .chc { font-size: 10px; color: #666; margin-top: 1px; white-space: nowrap; overflow: hidden; display: block; }
+ .mini.attack .v { color: #ff3b30; }
+ .mini.defense .v { color: #0a84ff; }
+ .mini.health .v { color: #34c759; }
+ .mini.speed .v { color: #ff9f0a; }
+ .mini.dmgup .v { color: #ff375f; }
+ .mini.dmgdown .v { color: #32d74b; }
 
-  .toggle-gear {
-    width: 100%;
-    background: none;
-    border: none;
-    color: #64d2ff;
-    font-size: 13px;
-    text-align: center;
-    padding: 8px 0 2px;
-    cursor: pointer;
-  }
-  .char-gear-list { display: none; margin-top: 8px; }
-  .char-gear-list.open { display: block; }
-  .gear-row {
-    background: #1c1c1e;
-    border-radius: 10px;
-    padding: 8px 10px;
-    margin-bottom: 6px;
-  }
-  .gear-row-name {
-    font-size: 13px;
-    color: #64d2ff;
-    font-weight: 700;
-    margin-bottom: 6px;
-  }
-  .gear-row-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
-  }
-  .gear-row-stats .mini { padding: 4px 2px; }
-  .gear-row-stats .mini .k { font-size: 10px; }
-  .gear-row-stats .mini .v { font-size: 12px; }
+ .toggle-gear {
+ width: 100%;
+ background: none;
+ border: none;
+ color: #64d2ff;
+ font-size: 13px;
+ text-align: center;
+ padding: 8px 0 2px;
+ cursor: pointer;
+ }
+ .char-gear-list { display: none; margin-top: 8px; }
+ .char-gear-list.open { display: block; }
+ .gear-row {
+ background: #1c1c1e;
+ border-radius: 10px;
+ padding: 8px 10px;
+ margin-bottom: 6px;
+ }
+ .gear-row-name {
+ font-size: 13px;
+ color: #64d2ff;
+ font-weight: 700;
+ margin-bottom: 6px;
+ }
+ .gear-row-stats {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 5px;
+ }
+ .gear-row-stats .mini { padding: 4px 2px; }
+ .gear-row-stats .mini .k { font-size: 10px; }
+ .gear-row-stats .mini .v { font-size: 12px; }
 
-  .section-detail {
-    margin-bottom: 14px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #3a3a3c;
-  }
-  .section-detail:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-  .section-detail-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: #64d2ff;
-    margin-bottom: 6px;
-  }
-  .section-detail-items {
-    margin-top: 6px;
-    opacity: 0.85;
-    display: none;
-  }
-  .char-gear-list.show-items .section-detail-items {
-    display: block;
-  }
-  .toggle-items {
-    width: 100%;
-    background: none;
-    border: 1px dashed #444;
-    border-radius: 8px;
-    color: #888;
-    font-size: 12px;
-    text-align: center;
-    padding: 6px 0;
-    margin-top: 4px;
-    cursor: pointer;
-  }
+ .section-detail {
+ margin-bottom: 14px;
+ padding-bottom: 10px;
+ border-bottom: 1px solid #3a3a3c;
+ }
+ .section-detail:last-child {
+ border-bottom: none;
+ margin-bottom: 0;
+ padding-bottom: 0;
+ }
+ .section-detail-title {
+ font-size: 13px;
+ font-weight: 700;
+ color: #64d2ff;
+ margin-bottom: 6px;
+ }
+ .section-detail-items {
+ margin-top: 6px;
+ opacity: 0.85;
+ display: none;
+ }
+ .char-gear-list.show-items .section-detail-items {
+ display: block;
+ }
+ .toggle-items {
+ width: 100%;
+ background: none;
+ border: 1px dashed #444;
+ border-radius: 8px;
+ color: #888;
+ font-size: 12px;
+ text-align: center;
+ padding: 6px 0;
+ margin-top: 4px;
+ cursor: pointer;
+ }
 
-  .btn-add-inscription {
-    width: 100%;
-    padding: 12px;
-    border: 1px dashed #64d2ff;
-    border-radius: 10px;
-    background: none;
-    color: #64d2ff;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-bottom: 12px;
-  }
-  #inscriptionContainer .gear-item.inscription-hidden {
-    display: none;
-  }
+ .btn-add-inscription {
+ width: 100%;
+ padding: 12px;
+ border: 1px dashed #64d2ff;
+ border-radius: 10px;
+ background: none;
+ color: #64d2ff;
+ font-size: 14px;
+ font-weight: 700;
+ cursor: pointer;
+ margin-bottom: 12px;
+ }
+ #inscriptionContainer .gear-item.inscription-hidden {
+ display: none;
+ }
 
-  .empty {
-    text-align: center;
-    color: #777;
-    padding: 20px 0;
-    font-size: 14px;
-  }
+ .empty {
+ text-align: center;
+ color: #777;
+ padding: 20px 0;
+ font-size: 14px;
+ }
 
-  .tabs {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
-    margin: 4px 0 14px;
-  }
-  .tab-btn {
-    padding: 10px 2px;
-    border: none;
-    border-radius: 10px;
-    background: #232325;
-    color: #999;
-    font-size: 12px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  .tab-btn.active {
-    background: #0a84ff;
-    color: #fff;
-  }
-  .tab-content { display: none; }
+ .tabs {
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 6px;
+ margin: 4px 0 14px;
+ }
+ .tab-btn {
+ padding: 10px 2px;
+ border: none;
+ border-radius: 10px;
+ background: #232325;
+ color: #999;
+ font-size: 12px;
+ font-weight: 700;
+ cursor: pointer;
+ }
+ .tab-btn.active {
+ background: #0a84ff;
+ color: #fff;
+ }
+ .tab-content { display: none; }
 
-  .mode-toggle {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    margin-bottom: 14px;
-  }
-  .mode-btn {
-    padding: 10px 4px;
-    border: none;
-    border-radius: 10px;
-    background: #232325;
-    color: #999;
-    font-size: 13px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  .mode-btn.active {
-    background: #64d2ff;
-    color: #1c1c1e;
-  }
-  .tab-content.active { display: block; }
+ .mode-toggle {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 6px;
+ margin-bottom: 14px;
+ }
+ .mode-btn {
+ padding: 10px 4px;
+ border: none;
+ border-radius: 10px;
+ background: #232325;
+ color: #999;
+ font-size: 13px;
+ font-weight: 700;
+ cursor: pointer;
+ }
+ .mode-btn.active {
+ background: #64d2ff;
+ color: #1c1c1e;
+ }
+ .tab-content.active { display: block; }
 
-  .page-nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 14px;
-  }
-  .page-nav-btn {
-    padding: 12px 4px;
-    border: none;
-    border-radius: 12px;
-    background: #232325;
-    color: #999;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-  }
-  .page-nav-btn.active {
-    background: #ffd60a;
-    color: #1c1c1e;
-  }
-  .page { display: none; }
-  .page.active { display: block; }
+ .page-nav {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 8px;
+ margin-bottom: 14px;
+ }
+ .page-nav-btn {
+ padding: 12px 4px;
+ border: none;
+ border-radius: 12px;
+ background: #232325;
+ color: #999;
+ font-size: 14px;
+ font-weight: 700;
+ cursor: pointer;
+ }
+ .page-nav-btn.active {
+ background: #ffd60a;
+ color: #1c1c1e;
+ }
+ .page { display: none; }
+ .page.active { display: block; }
 
-  .summary-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-    white-space: nowrap;
-  }
-  .summary-table th, .summary-table td {
-    padding: 8px 10px;
-    text-align: center;
-  }
-  .summary-table th {
-    color: #888;
-    font-weight: 600;
-    border-bottom: 1px solid #3a3a3c;
-  }
-  .summary-table td {
-    border-bottom: 1px solid #232325;
-  }
-  .summary-table td:first-child, .summary-table th:first-child {
-    text-align: right;
-    color: #64d2ff;
-    font-weight: 700;
-  }
+ .summary-table {
+ width: 100%;
+ border-collapse: collapse;
+ font-size: 12px;
+ white-space: nowrap;
+ }
+ .summary-table th, .summary-table td {
+ padding: 8px 10px;
+ text-align: center;
+ }
+ .summary-table th {
+ color: #888;
+ font-weight: 600;
+ border-bottom: 1px solid #3a3a3c;
+ }
+ .summary-table td {
+ border-bottom: 1px solid #232325;
+ }
+ .summary-table td:first-child, .summary-table th:first-child {
+ text-align: right;
+ color: #64d2ff;
+ font-weight: 700;
+ }
+
+ /* تنسيق مخصص لشاشات أكبر مثل الآيباد عند فتح الصفحة في سفاري */
+ @media (min-width: 768px) {
+ body { padding: 32px; align-items: flex-start; }
+ .app { max-width: 760px; }
+ h1 { font-size: 22px; }
+ .stats-grid { grid-template-columns: repeat(3, 1fr); }
+ .char-stats { grid-template-columns: repeat(6, 1fr); }
+ .gear-item .stats-grid { grid-template-columns: repeat(3, 1fr); }
+ .card { padding: 20px; }
+ .btn, .btn-cancel, .btn-next, .btn-prev { font-size: 16px; }
+ }
+
+ @media (min-width: 1024px) {
+ .app { max-width: 880px; }
+ }
 </style>
 </head>
 <body>
 <div class="app">
-  <h1>المسيرة</h1>
+ <h1>MARCH STATES</h1>
 
-  <div class="page-nav">
-    <button class="page-nav-btn active" id="pageBtn-input" onclick="switchPage('input')">الإدخال</button>
-    <button class="page-nav-btn" id="pageBtn-review" onclick="switchPage('review')">الاستعراض</button>
-  </div>
+ <div class="page-nav">
+ <button class="page-nav-btn active" id="pageBtn-input" onclick="switchPage('input')">الإدخال</button>
+ <button class="page-nav-btn" id="pageBtn-review" onclick="switchPage('review')">الاستعراض</button>
+ </div>
 
-  <div class="page active" id="page-input">
-  <div class="card" id="editSelectorCard" style="display:none;">
-    <label>تعديل مسيرة محفوظة</label>
-    <div style="display:flex; gap:8px;">
-      <select id="editSelector" onchange="onEditSelectorChange()" style="flex:1; margin-bottom:0;">
-        <option value="new">➕ مسيرة جديدة</option>
-      </select>
-      <button class="btn-delete-selected" id="deleteEditSelectedBtn" onclick="deleteEditSelectedMarch()" style="display:none;">🗑 حذف</button>
-    </div>
-  </div>
-  <div class="card" id="inputFormCard">
-    <label>March</label>
-    <input type="text" id="marchName" placeholder="سيظهر تلقائيًا من اسم القائد الأساسي والثانوي" readonly>
+ <div class="page active" id="page-input">
+ <div class="card" id="editSelectorCard" style="display:none;">
+ <label>تعديل مسيرة محفوظة</label>
+ <div style="display:flex; gap:8px;">
+ <select id="editSelector" onchange="onEditSelectorChange()" style="flex:1; margin-bottom:0;">
+ <option value="new">مسيرة جديدة</option>
+ </select>
+ <button class="btn-delete-selected" id="deleteEditSelectedBtn" onclick="deleteEditSelectedMarch()" style="display:none;">حذف</button>
+ </div>
+ </div>
+ <div class="card" id="inputFormCard">
+ <label>March</label>
+ <input type="text" id="marchName" placeholder="" readonly>
 
-    <div class="tabs">
-      <button class="tab-btn active" id="tabBtn-commanders" onclick="switchTab('commanders')">القادة</button>
-      <button class="tab-btn" id="tabBtn-gear" onclick="switchTab('gear')">المعدات</button>
-      <button class="tab-btn" id="tabBtn-formation" onclick="switchTab('formation')">التشكيل</button>
-      <button class="tab-btn" id="tabBtn-inscriptions" onclick="switchTab('inscriptions')">النقوش</button>
-    </div>
+ <div class="tabs">
+ <button class="tab-btn active" id="tabBtn-commanders" onclick="switchTab('commanders')">القادة</button>
+ <button class="tab-btn" id="tabBtn-gear" onclick="switchTab('gear')">المعدات</button>
+ <button class="tab-btn" id="tabBtn-formation" onclick="switchTab('formation')">التشكيل</button>
+ <button class="tab-btn" id="tabBtn-inscriptions" onclick="switchTab('inscriptions')">النقوش</button>
+ </div>
 
-    <div class="tab-content active" id="tab-commanders">
-      <div id="commanderContainer"></div>
-      <div class="section-total-box">
-        <div class="section-title" style="border-top:none; padding-top:0; margin-top:0;">Skills</div>
-        <div class="char-stats" id="totals-commanders"></div>
-      </div>
-      <div class="nav-row nav-row-single">
-        <button class="btn-next" onclick="switchTab('gear')">التالي: المعدات ▶</button>
-      </div>
-    </div>
+ <div class="tab-content active" id="tab-commanders">
+ <div id="commanderContainer"></div>
+ <div class="section-total-box">
+ <div class="section-title" style="border-top:none; padding-top:0; margin-top:0;">Skills</div>
+ <div class="char-stats" id="totals-commanders"></div>
+ </div>
+ <div class="nav-row nav-row-single">
+ <button class="btn-next" onclick="switchTab('gear')">التالي: المعدات ▶</button>
+ </div>
+ </div>
 
-    <div class="tab-content" id="tab-gear">
-      <label>طريقة الإدخال</label>
-      <div class="mode-toggle">
-        <button type="button" class="mode-btn active" id="modeBtn-gear-total" onclick="setGearMode('total')">Total</button>
-        <button type="button" class="mode-btn" id="modeBtn-gear-details" onclick="setGearMode('details')">Details</button>
-      </div>
+ <div class="tab-content" id="tab-gear">
+ <div class="mode-toggle">
+ <button type="button" class="mode-btn active" id="modeBtn-gear-total" onclick="setGearMode('total')">Total</button>
+ <button type="button" class="mode-btn" id="modeBtn-gear-details" onclick="setGearMode('details')">Details</button>
+ </div>
 
-      <div class="section-total-box">
-        <div class="section-title" style="border-top:none; padding-top:0; margin-top:0;" id="gearTotalTitle">مجموع المعدات (محسوب تلقائيًا من التفاصيل تحت)</div>
-        <div class="stats-grid" id="gearTotalInputs"></div>
-      </div>
-      <div id="gearContainer"></div>
-      <div class="nav-row">
-        <button class="btn-prev" onclick="switchTab('commanders')">◀ السابق: القادة</button>
-        <button class="btn-next" onclick="switchTab('formation')">التالي: التشكيل ▶</button>
-      </div>
-    </div>
+ <div class="section-total-box">
+ <div class="stats-grid" id="gearTotalInputs"></div>
+ </div>
+ <div id="gearContainer"></div>
+ <div class="nav-row">
+ <button class="btn-prev" onclick="switchTab('commanders')">◀ السابق: القادة</button>
+ <button class="btn-next" onclick="switchTab('formation')">التالي: التشكيل ▶</button>
+ </div>
+ </div>
 
-    <div class="tab-content" id="tab-formation">
-      <label>نوع التشكيل</label>
-      <select id="formationType">
-        <option value="اختر" selected>اختر</option>
-        <option value="القوس">القوس</option>
-        <option value="الوتد">الوتد</option>
-        <option value="دلتا">دلتا</option>
-        <option value="الكماشة">الكماشة</option>
-      </select>
+ <div class="tab-content" id="tab-formation">
+ <label>نوع التشكيل</label>
+ <select id="formationType">
+ <option value="اختر" selected>اختر</option>
+ <option value="القوس">القوس</option>
+ <option value="الوتد">الوتد</option>
+ <option value="دلتا">دلتا</option>
+ <option value="الكماشة">الكماشة</option>
+ </select>
 
-      <label>طريقة الإدخال</label>
-      <div class="mode-toggle">
-        <button type="button" class="mode-btn active" id="modeBtn-total" onclick="setFormationMode('total')">Total</button>
-        <button type="button" class="mode-btn" id="modeBtn-details" onclick="setFormationMode('details')">Details</button>
-      </div>
+ <div class="mode-toggle">
+ <button type="button" class="mode-btn active" id="modeBtn-total" onclick="setFormationMode('total')">Total</button>
+ <button type="button" class="mode-btn" id="modeBtn-details" onclick="setFormationMode('details')">Details</button>
+ </div>
 
-      <div class="section-total-box">
-        <div class="section-title" style="border-top:none; padding-top:0; margin-top:0;" id="formationTotalTitle">مجموع التشكيل (محسوب تلقائيًا من التفاصيل تحت)</div>
-        <div class="stats-grid" id="formationTotalInputs"></div>
-      </div>
-      <div id="formationContainer"></div>
-      <div class="nav-row">
-        <button class="btn-prev" onclick="switchTab('gear')">◀ السابق: المعدات</button>
-        <button class="btn-next" onclick="switchTab('inscriptions')">التالي: النقوش ▶</button>
-      </div>
-    </div>
+ <div class="section-total-box">
+ <div class="stats-grid" id="formationTotalInputs"></div>
+ </div>
+ <div id="formationContainer"></div>
+ <div class="nav-row">
+ <button class="btn-prev" onclick="switchTab('gear')">◀ السابق: المعدات</button>
+ <button class="btn-next" onclick="switchTab('inscriptions')">التالي: النقوش ▶</button>
+ </div>
+ </div>
 
-    <div class="tab-content" id="tab-inscriptions">
-      <button type="button" class="btn-add-inscription" id="addInscriptionBtn" onclick="addInscriptionSlot()">➕ إضافة نقش</button>
-      <div id="inscriptionContainer"></div>
-      <div class="section-total-box">
-        <div class="section-title" style="border-top:none; padding-top:0; margin-top:0;">مجموع النقوش</div>
-        <div class="char-stats" id="totals-inscriptions"></div>
-      </div>
-      <div class="nav-row nav-row-single">
-        <button class="btn-prev" onclick="switchTab('formation')">◀ السابق: التشكيل</button>
-      </div>
-    </div>
+ <div class="tab-content" id="tab-inscriptions">
+ <button type="button" class="btn-add-inscription" id="addInscriptionBtn" onclick="addInscriptionSlot()">إضافة نقش</button>
+ <div id="inscriptionContainer"></div>
+ <div class="section-total-box">
+ <div class="char-stats" id="totals-inscriptions"></div>
+ </div>
+ <div class="nav-row nav-row-single">
+ <button class="btn-prev" onclick="switchTab('formation')">◀ السابق: التشكيل</button>
+ </div>
+ </div>
 
-    <button class="btn" id="submitBtn" onclick="addCharacter()">حفظ</button>
-    <button class="btn-cancel" id="reviewBtn" onclick="switchPage('review')">استعرض</button>
-    <button class="btn-cancel" id="cancelBtn" onclick="cancelEdit()" style="display:none;">إلغاء التعديل</button>
-  </div>
-  </div>
+ <button class="btn" id="submitBtn" onclick="addCharacter()">حفظ</button>
+ <button class="btn-cancel" id="reviewBtn" onclick="switchPage('review')">استعرض</button>
+ <button class="btn-cancel" id="cancelBtn" onclick="cancelEdit()" style="display:none;">إلغاء التعديل</button>
+ </div>
+ </div>
 
-  <div class="page" id="page-review">
-    <div class="card" id="selectorCard" style="display:none;">
-      <label>اختر المسيرة لاستعراض إحصائيتها</label>
-      <div style="display:flex; gap:8px;">
-        <select id="marchSelector" onchange="filterByMarch()" style="flex:1; margin-bottom:0;">
-          <option value="all">عرض الكل</option>
-        </select>
-        <button class="btn-delete-selected" id="deleteSelectedBtn" onclick="deleteSelectedMarch()" style="display:none;">🗑 حذف</button>
-      </div>
-    </div>
-    <div class="card" id="summaryCard" style="display:none;">
-      <div class="section-title" style="border-top:none; padding-top:0; margin-top:0;">📋 مقارنة سريعة</div>
-      <div style="overflow-x:auto;">
-        <table class="summary-table" id="summaryTable"></table>
-      </div>
-    </div>
-    <div class="list" id="list">
-      <div class="empty" id="emptyMsg">لا توجد مسيرات مضافة بعد</div>
-    </div>
-  </div>
+ <div class="page" id="page-review">
+ <div class="card" id="livePreviewCard">
+ <div class="section-title" style="border-top:none; padding-top:0; margin-top:0;">الإحصائية الحالية</div>
+ <div class="char-stats" id="livePreviewStats"></div>
+ <button class="toggle-gear" onclick="toggleGear('live')">عرض تفاصيل الأقسام ▾</button>
+ <div class="char-gear-list" id="gearlist-live">
+ <button class="toggle-items" onclick="toggleItems('live')">إظهار عناصر كل قسم ▾</button>
+ <div id="livePreviewDetails"></div>
+ </div>
+ </div>
+ <div class="card" id="selectorCard" style="display:none;">
+ <label>اختر المسيرة لاستعراض إحصائيتها</label>
+ <div style="display:flex; gap:8px;">
+ <select id="marchSelector" onchange="filterByMarch()" style="flex:1; margin-bottom:0;">
+ <option value="all">عرض الكل</option>
+ </select>
+ <button class="btn-delete-selected" id="deleteSelectedBtn" onclick="deleteSelectedMarch()" style="display:none;">حذف</button>
+ </div>
+ </div>
+ <div class="card" id="summaryCard" style="display:none;">
+ <div class="section-title" style="border-top:none; padding-top:0; margin-top:0;">مقارنة سريعة</div>
+ <div style="overflow-x:auto;">
+ <table class="summary-table" id="summaryTable"></table>
+ </div>
+ </div>
+ <div class="list" id="list">
+ <div class="empty" id="emptyMsg">لا توجد مسيرات مضافة بعد</div>
+ </div>
+ </div>
 </div>
 
 <script>
 // تعريف كل خانة إحصائية ممكنة: المعرف، التسمية، الأيقونة، الصنف اللوني
 const STAT_DEFS = {
-  attack:  { key: "attack",  label: "⚔️ ATK",        cls: "attack"  },
-  defense: { key: "defense", label: "🛡️ DEF",         cls: "defense" },
-  health:  { key: "health",  label: "❤️ HP",          cls: "health"  },
-  speed:   { key: "speed",   label: "🏃 SPD",         cls: "speed"   },
-  dmgup:   { key: "dmgUp",   label: "🔺 +DMG",    cls: "dmgup"   },
-  dmgdown: { key: "dmgDown", label: "🔻 -DMG",    cls: "dmgdown" }
+ attack: { key: "attack", label: "ATK", cls: "attack" },
+ defense: { key: "defense", label: "DEF", cls: "defense" },
+ health: { key: "health", label: "HP", cls: "health" },
+ speed: { key: "speed", label: "SPD", cls: "speed" },
+ dmgup: { key: "dmgUp", label: "+DMG", cls: "dmgup" },
+ dmgdown: { key: "dmgDown", label: "-DMG", cls: "dmgdown" }
 };
 
 // إحصائيات القادة: هجوم / دفاع / صحة / سرعة المسيرة (بدون زيادة/تقليل الضرر)
@@ -628,61 +648,64 @@ const commanderStatKeys = ["attack", "defense", "health", "speed", "dmgup", "dmg
 const fullStatKeys = ["attack", "defense", "health", "speed", "dmgup", "dmgdown"];
 
 const commanderTypes = [
-  { id: "mainCmd", label: "⭐ القائد الأساسي", placeholder: "New" },
-  { id: "subCmd",  label: "🔸 القائد الثانوي", placeholder: "New" }
+ { id: "mainCmd", label: "Primary", placeholder: "New" },
+ { id: "subCmd", label: "Secondary", placeholder: "New" }
 ];
 
 const gearTypes = [
-  { id: "weapon", label: "🗡️ السلاح", placeholder: "مثال: سيف" },
-  { id: "helmet", label: "⛑️ الخوذة", placeholder: "مثال: خوذة حديد" },
-  { id: "chest",  label: "👕 الصدرية", placeholder: "مثال: درع صدر" },
-  { id: "gloves", label: "🧤 القفاز", placeholder: "مثال: قفاز جلد" },
-  { id: "pants",  label: "👖 البنطال", placeholder: "مثال: بنطال معدني" },
-  { id: "shoes",  label: "👢 الحذاء", placeholder: "مثال: جزمة قتال" }
+ { id: "weapon", label: "السلاح", placeholder: "مثال: سيف" },
+ { id: "helmet", label: "الخوذة", placeholder: "مثال: خوذة حديد" },
+ { id: "chest", label: "الصدرية", placeholder: "مثال: درع صدر" },
+ { id: "gloves", label: "القفاز", placeholder: "مثال: قفاز جلد" },
+ { id: "pants", label: "البنطال", placeholder: "مثال: بنطال معدني" },
+ { id: "shoes", label: "الحذاء", placeholder: "مثال: جزمة قتال" }
 ];
 
 const formationTypes = [
-  { id: "scroll", label: "📜 المخطوطة", placeholder: "مثال: مخطوطة قديمة" },
-  { id: "item",   label: "⚙️ المعدة", placeholder: "مثال: أداة نادرة" },
-  { id: "symbol", label: "🔯 الرمز", placeholder: "مثال: رمز الحماية" },
-  { id: "flag",   label: "🚩 العلم", placeholder: "مثال: علم القبيلة" }
+ { id: "scroll", label: "المخطوطة", placeholder: "مثال: مخطوطة قديمة" },
+ { id: "item", label: "المعدة", placeholder: "مثال: أداة نادرة" },
+ { id: "symbol", label: "الرمز", placeholder: "مثال: رمز الحماية" },
+ { id: "flag", label: "العلم", placeholder: "مثال: علم القبيلة" }
 ];
 
 const inscriptionTypes = Array.from({ length: 8 }, (_, i) => ({
-  id: "inscription" + (i + 1),
-  label: "🔮 النقش " + (i + 1),
-  placeholder: "مثال: نقش " + (i + 1)
+ id: "inscription" + (i + 1),
+ label: "النقش " + (i + 1),
+ placeholder: "مثال: نقش " + (i + 1)
 }));
 
 // يبني حقول إدخال (اسم + إحصائيات) لكل عنصر داخل حاوية معينة
 function buildInputs(containerId, types, statKeys, includeChance = true) {
-  const container = document.getElementById(containerId);
-  types.forEach(g => {
-    const div = document.createElement('div');
-    div.className = 'gear-item';
-    const statsHtml = statKeys.map(k => {
-      const d = STAT_DEFS[k];
-      const valueField = `
-          <div class="pct-field">
-            <input type="number" id="${g.id}_${k}" placeholder="0">
-            <span class="pct-suffix">%</span>
-          </div>`;
-      const chanceField = includeChance
-        ? `<input type="number" id="${g.id}_${k}_chance" placeholder="CHC">`
-        : '';
-      return `
-      <div class="stat-block ${d.cls}">
-        <label>${d.label}</label>
-        <div class="value-chance">${valueField}${chanceField}</div>
-      </div>`;
-    }).join('');
-    div.innerHTML = `
-      <div class="gear-name">${g.label}</div>
-      <input type="text" id="${g.id}_name" placeholder="${g.placeholder}">
-      <div class="stats-grid">${statsHtml}</div>
-    `;
-    container.appendChild(div);
-  });
+ const container = document.getElementById(containerId);
+ types.forEach(g => {
+ const div = document.createElement('div');
+ div.className = 'gear-item';
+ const statsHtml = statKeys.map(k => {
+ const d = STAT_DEFS[k];
+ const valueField = `
+ <div class="pct-field">
+ <input type="number" id="${g.id}_${k}" placeholder="0">
+ <span class="pct-suffix">%</span>
+ </div>`;
+ const chanceField = includeChance
+ ? `<div class="pct-field">
+ <input type="number" id="${g.id}_${k}_chance" placeholder="CHC">
+ <span class="pct-suffix">%</span>
+ </div>`
+ : '';
+ return `
+ <div class="stat-block ${d.cls}">
+ <label>${d.label}</label>
+ <div class="value-chance">${valueField}${chanceField}</div>
+ </div>`;
+ }).join('');
+ div.innerHTML = `
+ <div class="gear-name">${g.label}</div>
+ <input type="text" id="${g.id}_name" placeholder="${g.placeholder}">
+ <div class="stats-grid">${statsHtml}</div>
+ `;
+ container.appendChild(div);
+ });
 }
 
 buildInputs('commanderContainer', commanderTypes, commanderStatKeys);
@@ -691,94 +714,94 @@ buildInputs('commanderContainer', commanderTypes, commanderStatKeys);
 let savedCommanders = [];
 
 function buildCommanderPresetUI(g, statKeys) {
-  const wrap = document.createElement('div');
-  wrap.style.marginBottom = '10px';
-  wrap.innerHTML = `
-    <select id="${g.id}_preset" class="preset-select is-placeholder" style="margin-bottom:0;" onchange="applyCommanderPreset('${g.id}')">
-      <option value="" disabled selected>اختر</option>
-    </select>
-  `;
-  document.getElementById(g.id + '_name').insertAdjacentElement('beforebegin', wrap);
+ const wrap = document.createElement('div');
+ wrap.style.marginBottom = '10px';
+ wrap.innerHTML = `
+ <select id="${g.id}_preset" class="preset-select is-placeholder" style="margin-bottom:0;" onchange="applyCommanderPreset('${g.id}')">
+ <option value="" disabled selected>اختر</option>
+ </select>
+ `;
+ document.getElementById(g.id + '_name').insertAdjacentElement('beforebegin', wrap);
 }
 
-commanderTypes.forEach(g => buildCommanderPresetUI(g, commanderStatKeys));
+commanderTypes.forEach(g =>buildCommanderPresetUI(g, commanderStatKeys));
 
 const autoSaveTimers = {};
 
 // يحفظ (أو يحدّث) بيانات القائد تلقائيًا بعد توقف قصير عن الكتابة، بدون أي تأكيد أو تنبيه
 function scheduleAutoSaveCommander(id) {
-  clearTimeout(autoSaveTimers[id]);
-  autoSaveTimers[id] = setTimeout(() => autoSaveCommanderPreset(id), 600);
+ clearTimeout(autoSaveTimers[id]);
+ autoSaveTimers[id] = setTimeout(() =>autoSaveCommanderPreset(id), 600);
 }
 
 function autoSaveCommanderPreset(id) {
-  const name = document.getElementById(id + '_name').value.trim();
-  if (!name) return;
+ const name = document.getElementById(id + '_name').value.trim();
+ if (!name) return;
 
-  const preset = { name };
-  commanderStatKeys.forEach(k => {
-    preset[STAT_DEFS[k].key] = num(id + '_' + k);
-    preset[STAT_DEFS[k].key + 'Chance'] = num(id + '_' + k + '_chance');
-  });
+ const preset = { name };
+ commanderStatKeys.forEach(k => {
+ preset[STAT_DEFS[k].key] = num(id + '_' + k);
+ preset[STAT_DEFS[k].key + 'Chance'] = num(id + '_' + k + '_chance');
+ });
 
-  const existingIdx = savedCommanders.findIndex(p => p.name === name);
-  if (existingIdx !== -1) savedCommanders[existingIdx] = preset;
-  else savedCommanders.push(preset);
+ const existingIdx = savedCommanders.findIndex(p =>p.name === name);
+ if (existingIdx !== -1) savedCommanders[existingIdx] = preset;
+ else savedCommanders.push(preset);
 
-  renderCommanderPresetSelectors();
-  // نحافظ على القائد المختار حاليًا في القائمة كما هو بعد التحديث
-  document.getElementById(id + '_preset').value = name;
+ renderCommanderPresetSelectors();
+ // نحافظ على القائد المختار حاليًا في القائمة كما هو بعد التحديث
+ document.getElementById(id + '_preset').value = name;
 }
 
 commanderTypes.forEach(g => {
-  const fieldIds = [g.id + '_name', ...commanderStatKeys.flatMap(k => [g.id + '_' + k, g.id + '_' + k + '_chance'])];
-  fieldIds.forEach(fid => {
-    const el = document.getElementById(fid);
-    if (el) el.addEventListener('input', () => scheduleAutoSaveCommander(g.id));
-  });
+ const fieldIds = [g.id + '_name', ...commanderStatKeys.flatMap(k => [g.id + '_' + k, g.id + '_' + k + '_chance'])];
+ fieldIds.forEach(fid => {
+ const el = document.getElementById(fid);
+ if (el) el.addEventListener('input', () =>scheduleAutoSaveCommander(g.id));
+ });
 });
 
 function applyCommanderPreset(id) {
-  const selector = document.getElementById(id + '_preset');
-  const name = selector.value;
-  if (!name) return;
-  const preset = savedCommanders.find(p => p.name === name);
-  if (!preset) return;
+ const selector = document.getElementById(id + '_preset');
+ const name = selector.value;
+ if (!name) return;
+ const preset = savedCommanders.find(p =>p.name === name);
+ if (!preset) return;
 
-  selector.classList.remove('is-placeholder');
+ selector.classList.remove('is-placeholder');
 
-  document.getElementById(id + '_name').value = preset.name;
-  commanderStatKeys.forEach(k => {
-    document.getElementById(id + '_' + k).value = preset[STAT_DEFS[k].key];
-    document.getElementById(id + '_' + k + '_chance').value = preset[STAT_DEFS[k].key + 'Chance'];
-  });
+ document.getElementById(id + '_name').value = preset.name;
+ commanderStatKeys.forEach(k => {
+ document.getElementById(id + '_' + k).value = preset[STAT_DEFS[k].key];
+ document.getElementById(id + '_' + k + '_chance').value = preset[STAT_DEFS[k].key + 'Chance'];
+ });
 
-  updateMarchNameFromCommanders();
-  renderAllSectionTotals();
+ updateMarchNameFromCommanders();
+ renderAllSectionTotals();
 }
 
 function renderCommanderPresetSelectors() {
-  commanderTypes.forEach(g => {
-    const selector = document.getElementById(g.id + '_preset');
-    if (!selector) return;
-    const prevValue = selector.value;
-    selector.innerHTML = '<option value="" disabled>اختر</option>' +
-      savedCommanders.map(p => `<option value="${p.name}">${p.name}</option>`).join('');
-    const stillExists = savedCommanders.some(p => p.name === prevValue);
-    selector.value = stillExists ? prevValue : "";
-    selector.classList.toggle('is-placeholder', !stillExists);
-  });
-  saveToStorage();
+ commanderTypes.forEach(g => {
+ const selector = document.getElementById(g.id + '_preset');
+ if (!selector) return;
+ const prevValue = selector.value;
+ selector.innerHTML = '<option value="" disabled>اختر</option>' +
+ savedCommanders.map(p => `<option value="${p.name}">${p.name}</option>`).join('');
+ const stillExists = savedCommanders.some(p =>p.name === prevValue);
+ selector.value = stillExists ? prevValue : "";
+ selector.classList.toggle('is-placeholder', !stillExists);
+ });
+ saveToStorage();
 }
 
 function updateMarchNameFromCommanders() {
-  const main = document.getElementById('mainCmd_name').value.trim();
-  const sub = document.getElementById('subCmd_name').value.trim();
-  let combined = "";
-  if (main && sub) combined = main + " / " + sub;
-  else if (main) combined = main;
-  else if (sub) combined = sub;
-  document.getElementById('marchName').value = combined;
+ const main = document.getElementById('mainCmd_name').value.trim();
+ const sub = document.getElementById('subCmd_name').value.trim();
+ let combined = "";
+ if (main && sub) combined = main + " / " + sub;
+ else if (main) combined = main;
+ else if (sub) combined = sub;
+ document.getElementById('marchName').value = combined;
 }
 
 document.getElementById('mainCmd_name').addEventListener('input', updateMarchNameFromCommanders);
@@ -790,46 +813,44 @@ buildInputs('gearContainer', gearTypes, fullStatKeys, false);
 const gearTotalManual = {};
 
 (function buildGearTotalInputs() {
-  const el = document.getElementById('gearTotalInputs');
-  el.innerHTML = fullStatKeys.map(k => {
-    const d = STAT_DEFS[k];
-    return `
-    <div class="stat-block ${d.cls}">
-      <label>${d.label}</label>
-      <div class="pct-field">
-        <input type="number" id="gearTotal_${k}" placeholder="0">
-        <span class="pct-suffix">%</span>
-      </div>
-    </div>`;
-  }).join('');
+ const el = document.getElementById('gearTotalInputs');
+ el.innerHTML = fullStatKeys.map(k => {
+ const d = STAT_DEFS[k];
+ return `
+ <div class="stat-block ${d.cls}">
+ <label>${d.label}</label>
+ <div class="pct-field">
+ <input type="number" id="gearTotal_${k}" placeholder="0">
+ <span class="pct-suffix">%</span>
+ </div>
+ </div>`;
+ }).join('');
 
-  fullStatKeys.forEach(k => {
-    const input = document.getElementById('gearTotal_' + k);
-    input.addEventListener('input', () => {
-      gearTotalManual[k] = input.value !== "";
-    });
-  });
+ fullStatKeys.forEach(k => {
+ const input = document.getElementById('gearTotal_' + k);
+ input.addEventListener('input', () => {
+ gearTotalManual[k] = input.value !== "";
+ });
+ });
 })();
 
 let gearMode = 'details';
 
 function setGearMode(mode) {
-  gearMode = mode;
-  document.getElementById('modeBtn-gear-details').classList.toggle('active', mode === 'details');
-  document.getElementById('modeBtn-gear-total').classList.toggle('active', mode === 'total');
-  document.getElementById('gearContainer').style.display = (mode === 'details') ? 'block' : 'none';
+ gearMode = mode;
+ document.getElementById('modeBtn-gear-details').classList.toggle('active', mode === 'details');
+ document.getElementById('modeBtn-gear-total').classList.toggle('active', mode === 'total');
+ document.getElementById('gearContainer').style.display = (mode === 'details') ? 'block' : 'none';
 
-  const totalInputs = fullStatKeys.map(k => document.getElementById('gearTotal_' + k));
-  if (mode === 'total') {
-    document.getElementById('gearTotalTitle').textContent = 'مجموع المعدات (إدخال يدوي)';
-    totalInputs.forEach(inp => inp.readOnly = false);
-    fullStatKeys.forEach(k => gearTotalManual[k] = true);
-  } else {
-    document.getElementById('gearTotalTitle').textContent = 'مجموع المعدات (محسوب تلقائيًا من التفاصيل تحت)';
-    totalInputs.forEach(inp => inp.readOnly = true);
-    fullStatKeys.forEach(k => gearTotalManual[k] = false);
-    renderGearTotalInputs();
-  }
+ const totalInputs = fullStatKeys.map(k =>document.getElementById('gearTotal_' + k));
+ if (mode === 'total') {
+ totalInputs.forEach(inp =>inp.readOnly = false);
+ fullStatKeys.forEach(k =>gearTotalManual[k] = true);
+ } else {
+ totalInputs.forEach(inp =>inp.readOnly = true);
+ fullStatKeys.forEach(k =>gearTotalManual[k] = false);
+ renderGearTotalInputs();
+ }
 }
 
 buildInputs('formationContainer', formationTypes, fullStatKeys, false);
@@ -839,48 +860,46 @@ buildInputs('formationContainer', formationTypes, fullStatKeys, false);
 const formationTotalManual = {};
 
 (function buildFormationTotalInputs() {
-  const el = document.getElementById('formationTotalInputs');
-  el.innerHTML = fullStatKeys.map(k => {
-    const d = STAT_DEFS[k];
-    return `
-    <div class="stat-block ${d.cls}">
-      <label>${d.label}</label>
-      <div class="pct-field">
-        <input type="number" id="formTotal_${k}" placeholder="0">
-        <span class="pct-suffix">%</span>
-      </div>
-    </div>`;
-  }).join('');
+ const el = document.getElementById('formationTotalInputs');
+ el.innerHTML = fullStatKeys.map(k => {
+ const d = STAT_DEFS[k];
+ return `
+ <div class="stat-block ${d.cls}">
+ <label>${d.label}</label>
+ <div class="pct-field">
+ <input type="number" id="formTotal_${k}" placeholder="0">
+ <span class="pct-suffix">%</span>
+ </div>
+ </div>`;
+ }).join('');
 
-  fullStatKeys.forEach(k => {
-    const input = document.getElementById('formTotal_' + k);
-    input.addEventListener('input', () => {
-      formationTotalManual[k] = input.value !== "";
-    });
-  });
+ fullStatKeys.forEach(k => {
+ const input = document.getElementById('formTotal_' + k);
+ input.addEventListener('input', () => {
+ formationTotalManual[k] = input.value !== "";
+ });
+ });
 })();
 
 let formationMode = 'details';
 
 function setFormationMode(mode) {
-  formationMode = mode;
-  document.getElementById('modeBtn-details').classList.toggle('active', mode === 'details');
-  document.getElementById('modeBtn-total').classList.toggle('active', mode === 'total');
-  document.getElementById('formationContainer').style.display = (mode === 'details') ? 'block' : 'none';
+ formationMode = mode;
+ document.getElementById('modeBtn-details').classList.toggle('active', mode === 'details');
+ document.getElementById('modeBtn-total').classList.toggle('active', mode === 'total');
+ document.getElementById('formationContainer').style.display = (mode === 'details') ? 'block' : 'none';
 
-  const totalInputs = fullStatKeys.map(k => document.getElementById('formTotal_' + k));
-  if (mode === 'total') {
-    // وضع الإجمالي: الخانات مفتوحة للكتابة اليدوية دائمًا
-    document.getElementById('formationTotalTitle').textContent = 'مجموع التشكيل (إدخال يدوي)';
-    totalInputs.forEach(inp => inp.readOnly = false);
-    fullStatKeys.forEach(k => formationTotalManual[k] = true);
-  } else {
-    // وضع التفاصيل: الخانات للعرض فقط وتُحسب تلقائيًا من القطع تحتها
-    document.getElementById('formationTotalTitle').textContent = 'مجموع التشكيل (محسوب تلقائيًا من التفاصيل تحت)';
-    totalInputs.forEach(inp => inp.readOnly = true);
-    fullStatKeys.forEach(k => formationTotalManual[k] = false);
-    renderFormationTotalInputs();
-  }
+ const totalInputs = fullStatKeys.map(k =>document.getElementById('formTotal_' + k));
+ if (mode === 'total') {
+ // وضع الإجمالي: الخانات مفتوحة للكتابة اليدوية دائمًا
+ totalInputs.forEach(inp =>inp.readOnly = false);
+ fullStatKeys.forEach(k =>formationTotalManual[k] = true);
+ } else {
+ // وضع التفاصيل: الخانات للعرض فقط وتُحسب تلقائيًا من القطع تحتها
+ totalInputs.forEach(inp =>inp.readOnly = true);
+ fullStatKeys.forEach(k =>formationTotalManual[k] = false);
+ renderFormationTotalInputs();
+ }
 }
 
 buildInputs('inscriptionContainer', inscriptionTypes, fullStatKeys);
@@ -889,19 +908,19 @@ buildInputs('inscriptionContainer', inscriptionTypes, fullStatKeys);
 let visibleInscriptionCount = 0;
 
 function applyInscriptionVisibility() {
-  const items = document.querySelectorAll('#inscriptionContainer .gear-item');
-  items.forEach((el, idx) => {
-    el.classList.toggle('inscription-hidden', idx >= visibleInscriptionCount);
-  });
-  const btn = document.getElementById('addInscriptionBtn');
-  if (btn) btn.style.display = (visibleInscriptionCount >= inscriptionTypes.length) ? 'none' : 'block';
+ const items = document.querySelectorAll('#inscriptionContainer .gear-item');
+ items.forEach((el, idx) => {
+ el.classList.toggle('inscription-hidden', idx >= visibleInscriptionCount);
+ });
+ const btn = document.getElementById('addInscriptionBtn');
+ if (btn) btn.style.display = (visibleInscriptionCount >= inscriptionTypes.length) ? 'none' : 'block';
 }
 
 function addInscriptionSlot() {
-  if (visibleInscriptionCount < inscriptionTypes.length) {
-    visibleInscriptionCount++;
-    applyInscriptionVisibility();
-  }
+ if (visibleInscriptionCount < inscriptionTypes.length) {
+ visibleInscriptionCount++;
+ applyInscriptionVisibility();
+ }
 }
 
 applyInscriptionVisibility();
@@ -914,172 +933,227 @@ const FIELD_STAT_KEYS = {};
 const FIELD_POOL = {};
 
 function getPool(poolKey) {
-  if (!savedPresets[poolKey]) savedPresets[poolKey] = [];
-  return savedPresets[poolKey];
+ if (!savedPresets[poolKey]) savedPresets[poolKey] = [];
+ return savedPresets[poolKey];
 }
 
 function buildGenericPresetUI(g, poolKey) {
-  const wrap = document.createElement('div');
-  wrap.style.marginBottom = '10px';
-  wrap.innerHTML = `
-    <select id="${g.id}_preset" class="preset-select is-placeholder" style="margin-bottom:0;" onchange="applyGenericPreset('${g.id}')">
-      <option value="" disabled selected>اختر</option>
-    </select>
-  `;
-  document.getElementById(g.id + '_name').insertAdjacentElement('beforebegin', wrap);
+ const wrap = document.createElement('div');
+ wrap.style.marginBottom = '10px';
+ wrap.innerHTML = `
+ <select id="${g.id}_preset" class="preset-select is-placeholder" style="margin-bottom:0;" onchange="applyGenericPreset('${g.id}')">
+ <option value="" disabled selected>اختر</option>
+ </select>
+ `;
+ document.getElementById(g.id + '_name').insertAdjacentElement('beforebegin', wrap);
 }
 
 function scheduleAutoSaveGeneric(id) {
-  clearTimeout(autoSaveTimers[id]);
-  autoSaveTimers[id] = setTimeout(() => autoSaveGenericPreset(id), 600);
+ clearTimeout(autoSaveTimers[id]);
+ autoSaveTimers[id] = setTimeout(() =>autoSaveGenericPreset(id), 600);
 }
 
 function autoSaveGenericPreset(id) {
-  const statKeys = FIELD_STAT_KEYS[id];
-  const poolKey = FIELD_POOL[id];
-  const name = document.getElementById(id + '_name').value.trim();
-  if (!name) return;
+ const statKeys = FIELD_STAT_KEYS[id];
+ const poolKey = FIELD_POOL[id];
+ const name = document.getElementById(id + '_name').value.trim();
+ if (!name) return;
 
-  const preset = { name };
-  statKeys.forEach(k => {
-    preset[STAT_DEFS[k].key] = num(id + '_' + k);
-    preset[STAT_DEFS[k].key + 'Chance'] = num(id + '_' + k + '_chance');
-  });
+ const preset = { name };
+ statKeys.forEach(k => {
+ preset[STAT_DEFS[k].key] = num(id + '_' + k);
+ preset[STAT_DEFS[k].key + 'Chance'] = num(id + '_' + k + '_chance');
+ });
 
-  const pool = getPool(poolKey);
-  const existingIdx = pool.findIndex(p => p.name === name);
-  if (existingIdx !== -1) pool[existingIdx] = preset;
-  else pool.push(preset);
+ const pool = getPool(poolKey);
+ const existingIdx = pool.findIndex(p =>p.name === name);
+ if (existingIdx !== -1) pool[existingIdx] = preset;
+ else pool.push(preset);
 
-  renderGenericPresetSelector(id);
-  document.getElementById(id + '_preset').value = name;
+ renderGenericPresetSelector(id);
+ document.getElementById(id + '_preset').value = name;
 }
 
 function applyGenericPreset(id) {
-  const selector = document.getElementById(id + '_preset');
-  const name = selector.value;
-  if (!name) return;
-  const statKeys = FIELD_STAT_KEYS[id];
-  const pool = getPool(FIELD_POOL[id]);
-  const preset = pool.find(p => p.name === name);
-  if (!preset) return;
+ const selector = document.getElementById(id + '_preset');
+ const name = selector.value;
+ if (!name) return;
+ const statKeys = FIELD_STAT_KEYS[id];
+ const pool = getPool(FIELD_POOL[id]);
+ const preset = pool.find(p =>p.name === name);
+ if (!preset) return;
 
-  selector.classList.remove('is-placeholder');
+ selector.classList.remove('is-placeholder');
 
-  document.getElementById(id + '_name').value = preset.name;
-  statKeys.forEach(k => {
-    document.getElementById(id + '_' + k).value = preset[STAT_DEFS[k].key];
-    const chanceEl = document.getElementById(id + '_' + k + '_chance');
-    if (chanceEl) chanceEl.value = preset[STAT_DEFS[k].key + 'Chance'];
-  });
+ document.getElementById(id + '_name').value = preset.name;
+ statKeys.forEach(k => {
+ document.getElementById(id + '_' + k).value = preset[STAT_DEFS[k].key];
+ const chanceEl = document.getElementById(id + '_' + k + '_chance');
+ if (chanceEl) chanceEl.value = preset[STAT_DEFS[k].key + 'Chance'];
+ });
 
-  renderAllSectionTotals();
+ renderAllSectionTotals();
 }
 
 function renderGenericPresetSelector(id) {
-  const selector = document.getElementById(id + '_preset');
-  if (!selector) return;
-  const pool = getPool(FIELD_POOL[id]);
-  const prevValue = selector.value;
-  selector.innerHTML = '<option value="" disabled>اختر</option>' +
-    pool.map(p => `<option value="${p.name}">${p.name}</option>`).join('');
-  const stillExists = pool.some(p => p.name === prevValue);
-  selector.value = stillExists ? prevValue : "";
-  selector.classList.toggle('is-placeholder', !stillExists);
-  saveToStorage();
+ const selector = document.getElementById(id + '_preset');
+ if (!selector) return;
+ const pool = getPool(FIELD_POOL[id]);
+ const prevValue = selector.value;
+ selector.innerHTML = '<option value="" disabled>اختر</option>' +
+ pool.map(p => `<option value="${p.name}">${p.name}</option>`).join('');
+ const stillExists = pool.some(p =>p.name === prevValue);
+ selector.value = stillExists ? prevValue : "";
+ selector.classList.toggle('is-placeholder', !stillExists);
+ saveToStorage();
 }
 
 function setupGenericPresets(types, statKeys, poolKeyFn) {
-  types.forEach(g => {
-    const poolKey = poolKeyFn(g);
-    FIELD_STAT_KEYS[g.id] = statKeys;
-    FIELD_POOL[g.id] = poolKey;
-    buildGenericPresetUI(g, poolKey);
+ types.forEach(g => {
+ const poolKey = poolKeyFn(g);
+ FIELD_STAT_KEYS[g.id] = statKeys;
+ FIELD_POOL[g.id] = poolKey;
+ buildGenericPresetUI(g, poolKey);
 
-    const fieldIds = [g.id + '_name', ...statKeys.flatMap(k => [g.id + '_' + k, g.id + '_' + k + '_chance'])];
-    fieldIds.forEach(fid => {
-      const el = document.getElementById(fid);
-      if (el) el.addEventListener('input', () => scheduleAutoSaveGeneric(g.id));
-    });
-  });
+ const fieldIds = [g.id + '_name', ...statKeys.flatMap(k => [g.id + '_' + k, g.id + '_' + k + '_chance'])];
+ fieldIds.forEach(fid => {
+ const el = document.getElementById(fid);
+ if (el) el.addEventListener('input', () =>scheduleAutoSaveGeneric(g.id));
+ });
+ });
 }
 
-setupGenericPresets(gearTypes, fullStatKeys, g => g.id);
-setupGenericPresets(formationTypes, fullStatKeys, g => g.id);
+setupGenericPresets(gearTypes, fullStatKeys, g =>g.id);
+setupGenericPresets(formationTypes, fullStatKeys, g =>g.id);
 setupGenericPresets(inscriptionTypes, fullStatKeys, () => "inscriptions");
 
 const SECTION_LABELS = {
-  attack: "ATK", defense: "DEF", health: "HP",
-  speed: "SPD", dmgup: "+DMG", dmgdown: "-DMG"
+ attack: "ATK", defense: "DEF", health: "HP",
+ speed: "SPD", dmgup: "+DMG", dmgdown: "-DMG"
 };
 
 function computeSectionTotal(types, statKeys) {
-  const totals = {};
-  statKeys.forEach(k => totals[k] = 0);
-  types.forEach(g => {
-    statKeys.forEach(k => {
-      totals[k] += num(g.id + '_' + k);
-    });
-  });
-  return totals;
+ const totals = {};
+ statKeys.forEach(k =>totals[k] = 0);
+ types.forEach(g => {
+ statKeys.forEach(k => {
+ totals[k] += num(g.id + '_' + k);
+ });
+ });
+ return totals;
 }
 
 function computeSectionChanceTotal(types, statKeys) {
-  const totals = {};
-  statKeys.forEach(k => totals[k] = 0);
-  types.forEach(g => {
-    statKeys.forEach(k => {
-      totals[k] += num(g.id + '_' + k + '_chance');
-    });
-  });
-  return totals;
+ const totals = {};
+ statKeys.forEach(k =>totals[k] = 0);
+ types.forEach(g => {
+ statKeys.forEach(k => {
+ totals[k] += num(g.id + '_' + k + '_chance');
+ });
+ });
+ return totals;
 }
 
 function renderSectionTotalBox(elId, types, statKeys, chanceOnly) {
-  const el = document.getElementById(elId);
-  if (!el) return;
-  const chanceTotals = computeSectionChanceTotal(types, statKeys);
-  if (chanceOnly) {
-    el.innerHTML = statKeys.map(k => {
-      const d = STAT_DEFS[k];
-      return `<div class="mini ${d.cls}"><div class="k">${SECTION_LABELS[k]}</div><div class="v">${chanceTotals[k]}</div></div>`;
-    }).join('');
-    return;
-  }
-  const totals = computeSectionTotal(types, statKeys);
-  el.innerHTML = statKeys.map(k => {
-    const d = STAT_DEFS[k];
-    return `<div class="mini ${d.cls}"><div class="k">${SECTION_LABELS[k]}</div><div class="v">${totals[k]}</div><div class="chc">CHC: ${chanceTotals[k]}</div></div>`;
-  }).join('');
+ const el = document.getElementById(elId);
+ if (!el) return;
+ const chanceTotals = computeSectionChanceTotal(types, statKeys);
+ if (chanceOnly) {
+ el.innerHTML = statKeys.map(k => {
+ const d = STAT_DEFS[k];
+ return `<div class="mini ${d.cls}"><div class="k">${SECTION_LABELS[k]}</div><div class="v">${chanceTotals[k]}</div></div>`;
+ }).join('');
+ return;
+ }
+ const totals = computeSectionTotal(types, statKeys);
+ el.innerHTML = statKeys.map(k => {
+ const d = STAT_DEFS[k];
+ return `<div class="mini ${d.cls}"><div class="k">${SECTION_LABELS[k]}</div><div class="v">${totals[k]}</div><div class="chc">CHC: ${chanceTotals[k]}</div></div>`;
+ }).join('');
 }
 
 function renderAllSectionTotals() {
-  renderSectionTotalBox('totals-commanders', commanderTypes, commanderStatKeys);
-  renderGearTotalInputs();
-  renderFormationTotalInputs();
-  renderSectionTotalBox('totals-inscriptions', inscriptionTypes, fullStatKeys);
+ renderSectionTotalBox('totals-commanders', commanderTypes, commanderStatKeys);
+ renderGearTotalInputs();
+ renderFormationTotalInputs();
+ renderSectionTotalBox('totals-inscriptions', inscriptionTypes, fullStatKeys);
+ fitChcText();
+ renderLivePreview();
+}
+
+function renderLivePreview() {
+ const statsEl = document.getElementById('livePreviewStats');
+ if (!statsEl) return;
+
+ const c = buildRecordFromForm();
+
+ statsEl.innerHTML = `
+ <div class="mini attack"><div class="k">ATK</div><div class="v">${c.attack}</div></div>
+ <div class="mini defense"><div class="k">DEF</div><div class="v">${c.defense}</div></div>
+ <div class="mini health"><div class="k">HP</div><div class="v">${c.health}</div></div>
+ <div class="mini speed"><div class="k">SPD</div><div class="v">${c.speed}</div></div>
+ <div class="mini dmgup"><div class="k">+DMG</div><div class="v">${c.dmgUp}</div></div>
+ <div class="mini dmgdown"><div class="k">-DMG</div><div class="v">${c.dmgDown}</div></div>
+ `;
+
+ const detailsEl = document.getElementById('livePreviewDetails');
+ if (!detailsEl) return;
+
+ const commanderRows = renderItemRows(c.commanders, commanderStatKeys);
+ const gearRows = renderItemRows(c.gear, fullStatKeys);
+ const formationRows = renderItemRows(c.formations, fullStatKeys);
+ const inscriptionRows = renderItemRows(c.inscriptions, fullStatKeys);
+
+ const commanderSubtotal = computeItemsSubtotal(c.commanders, commanderStatKeys);
+ const gearSubtotal = {
+ attack: c.gearTotals.attack, defense: c.gearTotals.defense, health: c.gearTotals.health,
+ speed: c.gearTotals.speed, dmgup: c.gearTotals.dmgUp, dmgdown: c.gearTotals.dmgDown
+ };
+ const formationSubtotal = {
+ attack: c.formationTotals.attack, defense: c.formationTotals.defense, health: c.formationTotals.health,
+ speed: c.formationTotals.speed, dmgup: c.formationTotals.dmgUp, dmgdown: c.formationTotals.dmgDown
+ };
+ const inscriptionSubtotal = computeItemsSubtotal(c.inscriptions, fullStatKeys);
+
+ detailsEl.innerHTML = `
+ ${renderSectionDetail('Skills', commanderSubtotal, commanderStatKeys, commanderRows)}
+ ${renderSectionDetail('المعدات', gearSubtotal, fullStatKeys, gearRows)}
+ ${renderSectionDetail('التشكيل', formationSubtotal, fullStatKeys, formationRows)}
+ ${renderSectionDetail('النقوش', inscriptionSubtotal, fullStatKeys, inscriptionRows)}
+ `;
+}
+
+function fitChcText() {
+ document.querySelectorAll('.chc').forEach(el => {
+ let fontSize = 10;
+ el.style.fontSize = fontSize + 'px';
+ while (el.scrollWidth > el.clientWidth && fontSize > 6) {
+ fontSize -= 0.5;
+ el.style.fontSize = fontSize + 'px';
+ }
+ });
 }
 
 function renderGearTotalInputs() {
-  const totals = computeSectionTotal(gearTypes, fullStatKeys);
-  fullStatKeys.forEach(k => {
-    if (gearTotalManual[k]) return; // لا تكتب فوق ما أدخله المستخدم يدويًا
-    const input = document.getElementById('gearTotal_' + k);
-    if (input) input.value = totals[k] || "";
-  });
+ const totals = computeSectionTotal(gearTypes, fullStatKeys);
+ fullStatKeys.forEach(k => {
+ if (gearTotalManual[k]) return; // لا تكتب فوق ما أدخله المستخدم يدويًا
+ const input = document.getElementById('gearTotal_' + k);
+ if (input) input.value = totals[k] || "";
+ });
 }
 
 function renderFormationTotalInputs() {
-  const totals = computeSectionTotal(formationTypes, fullStatKeys);
-  fullStatKeys.forEach(k => {
-    if (formationTotalManual[k]) return; // لا تكتب فوق ما أدخله المستخدم يدويًا
-    const input = document.getElementById('formTotal_' + k);
-    if (input) input.value = totals[k] || "";
-  });
+ const totals = computeSectionTotal(formationTypes, fullStatKeys);
+ fullStatKeys.forEach(k => {
+ if (formationTotalManual[k]) return; // لا تكتب فوق ما أدخله المستخدم يدويًا
+ const input = document.getElementById('formTotal_' + k);
+ if (input) input.value = totals[k] || "";
+ });
 }
 
 document.getElementById('inputFormCard').addEventListener('input', e => {
-  if (e.target.type === 'number') renderAllSectionTotals();
+ if (e.target.type === 'number') renderAllSectionTotals();
 });
 
 let characters = [];
@@ -1089,453 +1163,457 @@ let editingIndex = null;
 const STORAGE_KEY = 'marchTracker_v1';
 
 function saveToStorage() {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({
-      characters,
-      savedCommanders,
-      savedPresets
-    }));
-  } catch (e) {
-    console.warn('تعذر الحفظ الدائم:', e);
-  }
+ try {
+ localStorage.setItem(STORAGE_KEY, JSON.stringify({
+ characters,
+ savedCommanders,
+ savedPresets
+ }));
+ } catch (e) {
+ console.warn('تعذر الحفظ الدائم:', e);
+ }
 }
 
 function loadFromStorage() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return;
-    const data = JSON.parse(raw);
-    if (Array.isArray(data.characters)) characters = data.characters;
-    if (Array.isArray(data.savedCommanders)) savedCommanders = data.savedCommanders;
-    if (data.savedPresets && typeof data.savedPresets === 'object') {
-      Object.keys(savedPresets).forEach(k => delete savedPresets[k]);
-      Object.assign(savedPresets, data.savedPresets);
-    }
-  } catch (e) {
-    console.warn('تعذر تحميل البيانات المحفوظة:', e);
-  }
+ try {
+ const raw = localStorage.getItem(STORAGE_KEY);
+ if (!raw) return;
+ const data = JSON.parse(raw);
+ if (Array.isArray(data.characters)) characters = data.characters;
+ if (Array.isArray(data.savedCommanders)) savedCommanders = data.savedCommanders;
+ if (data.savedPresets && typeof data.savedPresets === 'object') {
+ Object.keys(savedPresets).forEach(k =>delete savedPresets[k]);
+ Object.assign(savedPresets, data.savedPresets);
+ }
+ } catch (e) {
+ console.warn('تعذر تحميل البيانات المحفوظة:', e);
+ }
 }
 
 function switchPage(page) {
-  ['input', 'review'].forEach(p => {
-    document.getElementById('page-' + p).classList.toggle('active', p === page);
-    document.getElementById('pageBtn-' + p).classList.toggle('active', p === page);
-  });
-  if (page === 'input') switchTab('commanders');
+ ['input', 'review'].forEach(p => {
+ document.getElementById('page-' + p).classList.toggle('active', p === page);
+ document.getElementById('pageBtn-' + p).classList.toggle('active', p === page);
+ });
+ if (page === 'input') switchTab('commanders');
 }
 
 function switchTab(tab) {
-  ['commanders', 'gear', 'formation', 'inscriptions'].forEach(t => {
-    document.getElementById('tab-' + t).classList.toggle('active', t === tab);
-    document.getElementById('tabBtn-' + t).classList.toggle('active', t === tab);
-  });
+ ['commanders', 'gear', 'formation', 'inscriptions'].forEach(t => {
+ document.getElementById('tab-' + t).classList.toggle('active', t === tab);
+ document.getElementById('tabBtn-' + t).classList.toggle('active', t === tab);
+ });
 }
 
 function num(id) {
-  const el = document.getElementById(id);
-  return el ? (parseFloat(el.value) || 0) : 0;
+ const el = document.getElementById(id);
+ return el ? (parseFloat(el.value) || 0) : 0;
 }
 
 // يجمع بيانات مجموعة عناصر (قادة/معدات/تشكيل/نقوش) من الحقول، ويضيف مساهمتها لمجاميع المسيرة
 function collectItems(types, statKeys, totals) {
-  return types.map(g => {
-    const item = { label: g.label, name: document.getElementById(g.id + '_name').value.trim() || "—" };
-    statKeys.forEach(k => {
-      const d = STAT_DEFS[k];
-      const val = num(g.id + '_' + k);
-      const chance = num(g.id + '_' + k + '_chance');
-      item[d.key] = val;
-      item[d.key + 'Chance'] = chance;
-      totals[d.key] += val;
-    });
-    return item;
-  });
+ return types.map(g => {
+ const item = { label: g.label, name: document.getElementById(g.id + '_name').value.trim() || "—" };
+ statKeys.forEach(k => {
+ const d = STAT_DEFS[k];
+ const val = num(g.id + '_' + k);
+ const chance = num(g.id + '_' + k + '_chance');
+ item[d.key] = val;
+ item[d.key + 'Chance'] = chance;
+ totals[d.key] += val;
+ });
+ return item;
+ });
 }
 
 function resetForm() {
-  document.getElementById('marchName').value = "";
-  document.getElementById('formationType').value = "اختر";
-  [...commanderTypes, ...gearTypes, ...formationTypes, ...inscriptionTypes].forEach(g => {
-    const nameEl = document.getElementById(g.id + '_name');
-    if (nameEl) nameEl.value = "";
-  });
-  Object.keys(STAT_DEFS).forEach(k => {
-    [...commanderTypes, ...gearTypes, ...formationTypes, ...inscriptionTypes].forEach(g => {
-      const el = document.getElementById(g.id + '_' + k);
-      if (el) el.value = "";
-      const chanceEl = document.getElementById(g.id + '_' + k + '_chance');
-      if (chanceEl) chanceEl.value = "";
-    });
-  });
-  [...commanderTypes, ...gearTypes, ...formationTypes, ...inscriptionTypes].forEach(g => {
-    const presetEl = document.getElementById(g.id + '_preset');
-    if (presetEl) {
-      presetEl.value = "";
-      presetEl.classList.add('is-placeholder');
-    }
-  });
-  fullStatKeys.forEach(k => {
-    gearTotalManual[k] = false;
-    const input = document.getElementById('gearTotal_' + k);
-    if (input) input.value = "";
-  });
-  setGearMode('total');
-  fullStatKeys.forEach(k => {
-    formationTotalManual[k] = false;
-    const input = document.getElementById('formTotal_' + k);
-    if (input) input.value = "";
-  });
-  setFormationMode('total');
-  visibleInscriptionCount = 0;
-  applyInscriptionVisibility();
-  renderAllSectionTotals();
+ document.getElementById('marchName').value = "";
+ document.getElementById('formationType').value = "اختر";
+ [...commanderTypes, ...gearTypes, ...formationTypes, ...inscriptionTypes].forEach(g => {
+ const nameEl = document.getElementById(g.id + '_name');
+ if (nameEl) nameEl.value = "";
+ });
+ Object.keys(STAT_DEFS).forEach(k => {
+ [...commanderTypes, ...gearTypes, ...formationTypes, ...inscriptionTypes].forEach(g => {
+ const el = document.getElementById(g.id + '_' + k);
+ if (el) el.value = "";
+ const chanceEl = document.getElementById(g.id + '_' + k + '_chance');
+ if (chanceEl) chanceEl.value = "";
+ });
+ });
+ [...commanderTypes, ...gearTypes, ...formationTypes, ...inscriptionTypes].forEach(g => {
+ const presetEl = document.getElementById(g.id + '_preset');
+ if (presetEl) {
+ presetEl.value = "";
+ presetEl.classList.add('is-placeholder');
+ }
+ });
+ fullStatKeys.forEach(k => {
+ gearTotalManual[k] = false;
+ const input = document.getElementById('gearTotal_' + k);
+ if (input) input.value = "";
+ });
+ setGearMode('total');
+ fullStatKeys.forEach(k => {
+ formationTotalManual[k] = false;
+ const input = document.getElementById('formTotal_' + k);
+ if (input) input.value = "";
+ });
+ setFormationMode('total');
+ visibleInscriptionCount = 0;
+ applyInscriptionVisibility();
+ renderAllSectionTotals();
 }
 
 function cancelEdit() {
-  editingIndex = null;
-  document.getElementById('submitBtn').textContent = "حفظ";
-  document.getElementById('cancelBtn').style.display = "none";
-  document.getElementById('editSelector').value = "new";
-  resetForm();
+ editingIndex = null;
+ document.getElementById('submitBtn').textContent = "حفظ";
+ document.getElementById('cancelBtn').style.display = "none";
+ document.getElementById('editSelector').value = "new";
+ resetForm();
+}
+
+function buildRecordFromForm() {
+ const totals = { attack: 0, defense: 0, health: 0, speed: 0, dmgUp: 0, dmgDown: 0 };
+
+ const commanders = collectItems(commanderTypes, commanderStatKeys, totals);
+ const gearDummyTotals = { attack: 0, defense: 0, health: 0, speed: 0, dmgUp: 0, dmgDown: 0 };
+ const gear = collectItems(gearTypes, fullStatKeys, gearDummyTotals);
+ const formationsDummyTotals = { attack: 0, defense: 0, health: 0, speed: 0, dmgUp: 0, dmgDown: 0 };
+ const formations = collectItems(formationTypes, fullStatKeys, formationsDummyTotals);
+ const inscriptions = collectItems(inscriptionTypes, fullStatKeys, totals);
+
+ // مجموع المعدات يُؤخذ من الصندوق العلوي مباشرة (سواء محسوب تلقائيًا أو مدخل يدويًا)
+ const gearTotals = {};
+ const gearManualState = {};
+ fullStatKeys.forEach(k => {
+ const d = STAT_DEFS[k];
+ const val = num('gearTotal_' + k);
+ gearTotals[d.key] = val;
+ gearManualState[k] = !!gearTotalManual[k];
+ totals[d.key] += val;
+ });
+
+ // مجموع التشكيل يُؤخذ من الصندوق العلوي مباشرة (سواء محسوب تلقائيًا أو مدخل يدويًا)
+ const formationTotals = {};
+ const formationManualState = {};
+ fullStatKeys.forEach(k => {
+ const d = STAT_DEFS[k];
+ const val = num('formTotal_' + k);
+ formationTotals[d.key] = val;
+ formationManualState[k] = !!formationTotalManual[k];
+ totals[d.key] += val;
+ });
+
+ const formationType = document.getElementById('formationType').value;
+ const marchName = document.getElementById('marchName').value.trim() || "بدون اسم";
+
+ const total = totals.attack + totals.defense + totals.health + totals.speed + totals.dmgUp + totals.dmgDown;
+
+ return {
+ commanders, gear, formations, inscriptions, formationType, marchName,
+ gearTotals, gearManualState, gearMode,
+ formationTotals, formationManualState, formationMode,
+ attack: totals.attack, defense: totals.defense, health: totals.health,
+ speed: totals.speed, dmgUp: totals.dmgUp, dmgDown: totals.dmgDown,
+ total
+ };
 }
 
 function addCharacter() {
-  const totals = { attack: 0, defense: 0, health: 0, speed: 0, dmgUp: 0, dmgDown: 0 };
+ const record = buildRecordFromForm();
 
-  const commanders = collectItems(commanderTypes, commanderStatKeys, totals);
-  const gearDummyTotals = { attack: 0, defense: 0, health: 0, speed: 0, dmgUp: 0, dmgDown: 0 };
-  const gear = collectItems(gearTypes, fullStatKeys, gearDummyTotals);
-  const formationsDummyTotals = { attack: 0, defense: 0, health: 0, speed: 0, dmgUp: 0, dmgDown: 0 };
-  const formations = collectItems(formationTypes, fullStatKeys, formationsDummyTotals);
-  const inscriptions = collectItems(inscriptionTypes, fullStatKeys, totals);
+ if (editingIndex !== null) {
+ characters[editingIndex] = record;
+ } else {
+ characters.push(record);
+ editingIndex = characters.length - 1;
+ }
 
-  // مجموع المعدات يُؤخذ من الصندوق العلوي مباشرة (سواء محسوب تلقائيًا أو مدخل يدويًا)
-  const gearTotals = {};
-  const gearManualState = {};
-  fullStatKeys.forEach(k => {
-    const d = STAT_DEFS[k];
-    const val = num('gearTotal_' + k);
-    gearTotals[d.key] = val;
-    gearManualState[k] = !!gearTotalManual[k];
-    totals[d.key] += val;
-  });
+ document.getElementById('submitBtn').textContent = "حفظ التعديل";
+ document.getElementById('cancelBtn').style.display = "block";
+ document.getElementById('editSelector').value = editingIndex;
 
-  // مجموع التشكيل يُؤخذ من الصندوق العلوي مباشرة (سواء محسوب تلقائيًا أو مدخل يدويًا)
-  const formationTotals = {};
-  const formationManualState = {};
-  fullStatKeys.forEach(k => {
-    const d = STAT_DEFS[k];
-    const val = num('formTotal_' + k);
-    formationTotals[d.key] = val;
-    formationManualState[k] = !!formationTotalManual[k];
-    totals[d.key] += val;
-  });
-
-  const formationType = document.getElementById('formationType').value;
-  const marchName = document.getElementById('marchName').value.trim() || "بدون اسم";
-
-  const total = totals.attack + totals.defense + totals.health + totals.speed + totals.dmgUp + totals.dmgDown;
-
-  const record = {
-    commanders, gear, formations, inscriptions, formationType, marchName,
-    gearTotals, gearManualState, gearMode,
-    formationTotals, formationManualState, formationMode,
-    attack: totals.attack, defense: totals.defense, health: totals.health,
-    speed: totals.speed, dmgUp: totals.dmgUp, dmgDown: totals.dmgDown,
-    total
-  };
-
-  if (editingIndex !== null) {
-    characters[editingIndex] = record;
-  } else {
-    characters.push(record);
-    editingIndex = characters.length - 1;
-  }
-
-  document.getElementById('submitBtn').textContent = "حفظ التعديل";
-  document.getElementById('cancelBtn').style.display = "block";
-  document.getElementById('editSelector').value = editingIndex;
-
-  renderList();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+ renderList();
+ window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function fillItemInputs(types, statKeys, data) {
-  types.forEach((g, idx) => {
-    const d = data[idx];
-    document.getElementById(g.id + '_name').value = d.name === "—" ? "" : d.name;
-    statKeys.forEach(k => {
-      document.getElementById(g.id + '_' + k).value = d[STAT_DEFS[k].key];
-      const chanceEl = document.getElementById(g.id + '_' + k + '_chance');
-      if (chanceEl) chanceEl.value = d[STAT_DEFS[k].key + 'Chance'];
-    });
-  });
+ types.forEach((g, idx) => {
+ const d = data[idx];
+ document.getElementById(g.id + '_name').value = d.name === "—" ? "" : d.name;
+ statKeys.forEach(k => {
+ document.getElementById(g.id + '_' + k).value = d[STAT_DEFS[k].key];
+ const chanceEl = document.getElementById(g.id + '_' + k + '_chance');
+ if (chanceEl) chanceEl.value = d[STAT_DEFS[k].key + 'Chance'];
+ });
+ });
 }
 
 function editCharacter(index) {
-  const c = characters[index];
-  editingIndex = index;
+ const c = characters[index];
+ editingIndex = index;
 
-  fillItemInputs(commanderTypes, commanderStatKeys, c.commanders);
-  fillItemInputs(gearTypes, fullStatKeys, c.gear);
-  fillItemInputs(formationTypes, fullStatKeys, c.formations);
-  fillItemInputs(inscriptionTypes, fullStatKeys, c.inscriptions);
-  visibleInscriptionCount = inscriptionTypes.length;
-  applyInscriptionVisibility();
-  document.getElementById('formationType').value = c.formationType;
+ fillItemInputs(commanderTypes, commanderStatKeys, c.commanders);
+ fillItemInputs(gearTypes, fullStatKeys, c.gear);
+ fillItemInputs(formationTypes, fullStatKeys, c.formations);
+ fillItemInputs(inscriptionTypes, fullStatKeys, c.inscriptions);
+ visibleInscriptionCount = inscriptionTypes.length;
+ applyInscriptionVisibility();
+ document.getElementById('formationType').value = c.formationType;
 
-  setGearMode(c.gearMode || 'total');
-  if (c.gearTotals && (c.gearMode === 'total')) {
-    fullStatKeys.forEach(k => {
-      const d = STAT_DEFS[k];
-      document.getElementById('gearTotal_' + k).value = c.gearTotals[d.key];
-    });
-  }
+ setGearMode(c.gearMode || 'total');
+ if (c.gearTotals && (c.gearMode === 'total')) {
+ fullStatKeys.forEach(k => {
+ const d = STAT_DEFS[k];
+ document.getElementById('gearTotal_' + k).value = c.gearTotals[d.key];
+ });
+ }
 
-  setFormationMode(c.formationMode || 'total');
-  if (c.formationTotals && (c.formationMode === 'total')) {
-    fullStatKeys.forEach(k => {
-      const d = STAT_DEFS[k];
-      document.getElementById('formTotal_' + k).value = c.formationTotals[d.key];
-    });
-  }
+ setFormationMode(c.formationMode || 'total');
+ if (c.formationTotals && (c.formationMode === 'total')) {
+ fullStatKeys.forEach(k => {
+ const d = STAT_DEFS[k];
+ document.getElementById('formTotal_' + k).value = c.formationTotals[d.key];
+ });
+ }
 
-  updateMarchNameFromCommanders();
-  renderAllSectionTotals();
+ updateMarchNameFromCommanders();
+ renderAllSectionTotals();
 
-  document.getElementById('submitBtn').textContent = "حفظ التعديل";
-  document.getElementById('cancelBtn').style.display = "block";
-  document.getElementById('editSelector').value = index;
+ document.getElementById('submitBtn').textContent = "حفظ التعديل";
+ document.getElementById('cancelBtn').style.display = "block";
+ document.getElementById('editSelector').value = index;
 
-  switchPage('input');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+ switchPage('input');
+ window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function removeCharacter(index) {
-  characters.splice(index, 1);
-  if (editingIndex === index) cancelEdit();
-  renderList();
+ characters.splice(index, 1);
+ if (editingIndex === index) cancelEdit();
+ renderList();
 }
 
 function toggleGear(index) {
-  const el = document.getElementById('gearlist-' + index);
-  el.classList.toggle('open');
+ const el = document.getElementById('gearlist-' + index);
+ el.classList.toggle('open');
 }
 
 function toggleItems(index) {
-  const el = document.getElementById('gearlist-' + index);
-  const isOpen = el.classList.toggle('show-items');
-  const btn = el.querySelector('.toggle-items');
-  if (btn) btn.textContent = isOpen ? 'إخفاء عناصر كل قسم ▴' : 'إظهار عناصر كل قسم ▾';
+ const el = document.getElementById('gearlist-' + index);
+ const isOpen = el.classList.toggle('show-items');
+ const btn = el.querySelector('.toggle-items');
+ if (btn) btn.textContent = isOpen ? 'إخفاء عناصر كل قسم ▴' : 'إظهار عناصر كل قسم ▾';
 }
 
 function renderItemRows(items, statKeys) {
-  return items.map(g => {
-    const statsHtml = statKeys.map(k => {
-      const d = STAT_DEFS[k];
-      const chance = g[d.key + 'Chance'];
-      const chanceTxt = chance ? ` <small style="opacity:.6">(${chance}%)</small>` : '';
-      return `<div class="mini ${d.cls}"><div class="k">${d.label.replace(/^[^\s]+\s/, '')}</div><div class="v">${g[d.key]}${chanceTxt}</div></div>`;
-    }).join('');
-    return `
-      <div class="gear-row">
-        <div class="gear-row-name">${g.label}: ${g.name}</div>
-        <div class="gear-row-stats">${statsHtml}</div>
-      </div>`;
-  }).join('');
+ return items.map(g => {
+ const statsHtml = statKeys.map(k => {
+ const d = STAT_DEFS[k];
+ const chance = g[d.key + 'Chance'];
+ const chanceTxt = chance ? ` <small style="opacity:.6">(${chance}%)</small>` : '';
+ return `<div class="mini ${d.cls}"><div class="k">${d.label.replace(/^[^\s]+\s/, '')}</div><div class="v">${g[d.key]}${chanceTxt}</div></div>`;
+ }).join('');
+ return `
+ <div class="gear-row">
+ <div class="gear-row-name">${g.label}: ${g.name}</div>
+ <div class="gear-row-stats">${statsHtml}</div>
+ </div>`;
+ }).join('');
 }
 
 function renderSummaryTable() {
-  const card = document.getElementById('summaryCard');
-  const table = document.getElementById('summaryTable');
+ const card = document.getElementById('summaryCard');
+ const table = document.getElementById('summaryTable');
 
-  if (characters.length === 0) {
-    card.style.display = "none";
-    return;
-  }
-  card.style.display = "block";
+ if (characters.length === 0) {
+ card.style.display = "none";
+ return;
+ }
+ card.style.display = "block";
 
-  const cols = [
-    { k: 'attack',  label: '⚔️ ATK' },
-    { k: 'defense', label: '🛡️ DEF' },
-    { k: 'health',  label: '❤️ HP' },
-    { k: 'speed',   label: '🏃 SPD' },
-    { k: 'dmgUp',   label: '🔺 +DMG' },
-    { k: 'dmgDown', label: '🔻 -DMG' },
-    { k: 'total',   label: 'المجموع' }
-  ];
+ const cols = [
+ { k: 'attack', label: 'ATK' },
+ { k: 'defense', label: 'DEF' },
+ { k: 'health', label: 'HP' },
+ { k: 'speed', label: 'SPD' },
+ { k: 'dmgUp', label: '+DMG' },
+ { k: 'dmgDown', label: '-DMG' },
+ { k: 'total', label: 'المجموع' }
+ ];
 
-  let html = '<tr><th>مسيرة</th>' + cols.map(c => `<th>${c.label}</th>`).join('') + '</tr>';
-  characters.forEach((c, i) => {
-    html += `<tr><td>${c.marchName}</td>` + cols.map(c2 => `<td>${c[c2.k]}</td>`).join('') + '</tr>';
-  });
-  table.innerHTML = html;
+ let html = '<tr><th>مسيرة</th>' + cols.map(c => `<th>${c.label}</th>`).join('') + '</tr>';
+ characters.forEach((c, i) => {
+ html += `<tr><td>${c.marchName}</td>` + cols.map(c2 => `<td>${c[c2.k]}</td>`).join('') + '</tr>';
+ });
+ table.innerHTML = html;
 }
 
 function computeItemsSubtotal(items, statKeys) {
-  const totals = {};
-  statKeys.forEach(k => totals[k] = 0);
-  items.forEach(item => {
-    statKeys.forEach(k => {
-      totals[k] += item[STAT_DEFS[k].key] || 0;
-    });
-  });
-  return totals;
+ const totals = {};
+ statKeys.forEach(k =>totals[k] = 0);
+ items.forEach(item => {
+ statKeys.forEach(k => {
+ totals[k] += item[STAT_DEFS[k].key] || 0;
+ });
+ });
+ return totals;
 }
 
 function renderSectionDetail(title, totals, statKeys, itemRowsHtml) {
-  const totalsHtml = statKeys.map(k => {
-    const d = STAT_DEFS[k];
-    return `<div class="mini ${d.cls}"><div class="k">${SECTION_LABELS[k]}</div><div class="v">${totals[k]}</div></div>`;
-  }).join('');
-  return `
-    <div class="section-detail">
-      <div class="section-detail-title">${title}</div>
-      <div class="char-stats">${totalsHtml}</div>
-      <div class="section-detail-items">${itemRowsHtml}</div>
-    </div>`;
+ const totalsHtml = statKeys.map(k => {
+ const d = STAT_DEFS[k];
+ return `<div class="mini ${d.cls}"><div class="k">${SECTION_LABELS[k]}</div><div class="v">${totals[k]}</div></div>`;
+ }).join('');
+ return `
+ <div class="section-detail">
+ <div class="section-detail-title">${title}</div>
+ <div class="char-stats">${totalsHtml}</div>
+ <div class="section-detail-items">${itemRowsHtml}</div>
+ </div>`;
 }
 
 function renderList() {
-  const list = document.getElementById('list');
-  list.innerHTML = "";
+ const list = document.getElementById('list');
+ list.innerHTML = "";
 
-  saveToStorage();
-  renderSummaryTable();
-  renderMarchSelector();
-  renderEditSelector();
+ saveToStorage();
+ renderSummaryTable();
+ renderMarchSelector();
+ renderEditSelector();
 
-  if (characters.length === 0) {
-    list.innerHTML = '<div class="empty">لا توجد مسيرات مضافة بعد</div>';
-    return;
-  }
+ if (characters.length === 0) {
+ list.innerHTML = '<div class="empty">لا توجد مسيرات مضافة بعد</div>';
+ return;
+ }
 
-  characters.forEach((c, i) => {
-    const div = document.createElement('div');
-    div.className = 'char';
-    div.dataset.marchIndex = i;
+ characters.forEach((c, i) => {
+ const div = document.createElement('div');
+ div.className = 'char';
+ div.dataset.marchIndex = i;
 
-    const commanderRows = renderItemRows(c.commanders, commanderStatKeys);
-    const gearRows = renderItemRows(c.gear, fullStatKeys);
-    const formationRows = renderItemRows(c.formations, fullStatKeys);
-    const inscriptionRows = renderItemRows(c.inscriptions, fullStatKeys);
+ const commanderRows = renderItemRows(c.commanders, commanderStatKeys);
+ const gearRows = renderItemRows(c.gear, fullStatKeys);
+ const formationRows = renderItemRows(c.formations, fullStatKeys);
+ const inscriptionRows = renderItemRows(c.inscriptions, fullStatKeys);
 
-    const commanderSubtotal = computeItemsSubtotal(c.commanders, commanderStatKeys);
-    const gearSubtotal = c.gearTotals ? {
-      attack: c.gearTotals.attack, defense: c.gearTotals.defense, health: c.gearTotals.health,
-      speed: c.gearTotals.speed, dmgup: c.gearTotals.dmgUp, dmgdown: c.gearTotals.dmgDown
-    } : computeItemsSubtotal(c.gear, fullStatKeys);
-    const formationSubtotal = c.formationTotals ? {
-      attack: c.formationTotals.attack, defense: c.formationTotals.defense, health: c.formationTotals.health,
-      speed: c.formationTotals.speed, dmgup: c.formationTotals.dmgUp, dmgdown: c.formationTotals.dmgDown
-    } : computeItemsSubtotal(c.formations, fullStatKeys);
-    const inscriptionSubtotal = computeItemsSubtotal(c.inscriptions, fullStatKeys);
+ const commanderSubtotal = computeItemsSubtotal(c.commanders, commanderStatKeys);
+ const gearSubtotal = c.gearTotals ? {
+ attack: c.gearTotals.attack, defense: c.gearTotals.defense, health: c.gearTotals.health,
+ speed: c.gearTotals.speed, dmgup: c.gearTotals.dmgUp, dmgdown: c.gearTotals.dmgDown
+ } : computeItemsSubtotal(c.gear, fullStatKeys);
+ const formationSubtotal = c.formationTotals ? {
+ attack: c.formationTotals.attack, defense: c.formationTotals.defense, health: c.formationTotals.health,
+ speed: c.formationTotals.speed, dmgup: c.formationTotals.dmgUp, dmgdown: c.formationTotals.dmgDown
+ } : computeItemsSubtotal(c.formations, fullStatKeys);
+ const inscriptionSubtotal = computeItemsSubtotal(c.inscriptions, fullStatKeys);
 
-    div.innerHTML = `
-      <div class="char-head">
-        <span class="char-name">${c.marchName} <span class="commander-badge">${c.formationType}</span></span>
-        <div>
-          <span class="char-total">المجموع: ${c.total}</span>
-          <button class="char-edit" onclick="editCharacter(${i})">✎</button>
-          <button class="char-del" onclick="removeCharacter(${i})">✕</button>
-        </div>
-      </div>
-      <div class="section-title" style="border-top:none; padding-top:0; margin-top:0;">📊 الإحصائية الكاملة</div>
-      <div class="char-stats">
-        <div class="mini attack"><div class="k">ATK</div><div class="v">${c.attack}</div></div>
-        <div class="mini defense"><div class="k">DEF</div><div class="v">${c.defense}</div></div>
-        <div class="mini health"><div class="k">HP</div><div class="v">${c.health}</div></div>
-        <div class="mini speed"><div class="k">SPD</div><div class="v">${c.speed}</div></div>
-        <div class="mini dmgup"><div class="k">+DMG</div><div class="v">${c.dmgUp}</div></div>
-        <div class="mini dmgdown"><div class="k">-DMG</div><div class="v">${c.dmgDown}</div></div>
-      </div>
-      <button class="toggle-gear" onclick="toggleGear(${i})">عرض تفاصيل الأقسام ▾</button>
-      <div class="char-gear-list" id="gearlist-${i}">
-        <button class="toggle-items" onclick="toggleItems(${i})">إظهار عناصر كل قسم ▾</button>
-        ${renderSectionDetail('Skills', commanderSubtotal, commanderStatKeys, commanderRows)}
-        ${renderSectionDetail('المعدات', gearSubtotal, fullStatKeys, gearRows)}
-        ${renderSectionDetail('التشكيل', formationSubtotal, fullStatKeys, formationRows)}
-        ${renderSectionDetail('النقوش', inscriptionSubtotal, fullStatKeys, inscriptionRows)}
-      </div>
-    `;
-    list.appendChild(div);
-  });
+ div.innerHTML = `
+ <div class="char-head">
+ <span class="char-name">${c.marchName} <span class="commander-badge">${c.formationType}</span></span>
+ <div>
+ <span class="char-total">المجموع: ${c.total}</span>
+ <button class="char-edit" onclick="editCharacter(${i})"></button>
+ <button class="char-del" onclick="removeCharacter(${i})"></button>
+ </div>
+ </div>
+ <div class="section-title" style="border-top:none; padding-top:0; margin-top:0;">الإحصائية الكاملة</div>
+ <div class="char-stats">
+ <div class="mini attack"><div class="k">ATK</div><div class="v">${c.attack}</div></div>
+ <div class="mini defense"><div class="k">DEF</div><div class="v">${c.defense}</div></div>
+ <div class="mini health"><div class="k">HP</div><div class="v">${c.health}</div></div>
+ <div class="mini speed"><div class="k">SPD</div><div class="v">${c.speed}</div></div>
+ <div class="mini dmgup"><div class="k">+DMG</div><div class="v">${c.dmgUp}</div></div>
+ <div class="mini dmgdown"><div class="k">-DMG</div><div class="v">${c.dmgDown}</div></div>
+ </div>
+ <button class="toggle-gear" onclick="toggleGear(${i})">عرض تفاصيل الأقسام ▾</button>
+ <div class="char-gear-list" id="gearlist-${i}">
+ <button class="toggle-items" onclick="toggleItems(${i})">إظهار عناصر كل قسم ▾</button>
+ ${renderSectionDetail('Skills', commanderSubtotal, commanderStatKeys, commanderRows)}
+ ${renderSectionDetail('المعدات', gearSubtotal, fullStatKeys, gearRows)}
+ ${renderSectionDetail('التشكيل', formationSubtotal, fullStatKeys, formationRows)}
+ ${renderSectionDetail('النقوش', inscriptionSubtotal, fullStatKeys, inscriptionRows)}
+ </div>
+ `;
+ list.appendChild(div);
+ });
 
-  filterByMarch();
+ filterByMarch();
 }
 
 function renderMarchSelector() {
-  const card = document.getElementById('selectorCard');
-  const selector = document.getElementById('marchSelector');
+ const card = document.getElementById('selectorCard');
+ const selector = document.getElementById('marchSelector');
 
-  if (characters.length === 0) {
-    card.style.display = "none";
-    return;
-  }
-  card.style.display = "block";
+ if (characters.length === 0) {
+ card.style.display = "none";
+ return;
+ }
+ card.style.display = "block";
 
-  const prevValue = selector.value;
-  selector.innerHTML = '<option value="all">عرض الكل</option>' +
-    characters.map((c, i) => `<option value="${i}">${c.marchName}</option>`).join('');
+ const prevValue = selector.value;
+ selector.innerHTML = '<option value="all">عرض الكل</option>' +
+ characters.map((c, i) => `<option value="${i}">${c.marchName}</option>`).join('');
 
-  const stillExists = [...selector.options].some(o => o.value === prevValue);
-  selector.value = stillExists ? prevValue : "all";
+ const stillExists = [...selector.options].some(o =>o.value === prevValue);
+ selector.value = stillExists ? prevValue : "all";
 }
 
 function filterByMarch() {
-  const selector = document.getElementById('marchSelector');
-  const val = selector ? selector.value : "all";
-  document.querySelectorAll('#list .char').forEach(el => {
-    el.style.display = (val === "all" || el.dataset.marchIndex === val) ? "block" : "none";
-  });
-  document.getElementById('deleteSelectedBtn').style.display = (val === "all") ? "none" : "inline-block";
+ const selector = document.getElementById('marchSelector');
+ const val = selector ? selector.value : "all";
+ document.querySelectorAll('#list .char').forEach(el => {
+ el.style.display = (val === "all" || el.dataset.marchIndex === val) ? "block" : "none";
+ });
+ document.getElementById('deleteSelectedBtn').style.display = (val === "all") ? "none" : "inline-block";
 }
 
 function deleteSelectedMarch() {
-  const selector = document.getElementById('marchSelector');
-  const val = selector.value;
-  if (val === "all") return;
-  const index = parseInt(val, 10);
-  removeCharacter(index);
+ const selector = document.getElementById('marchSelector');
+ const val = selector.value;
+ if (val === "all") return;
+ const index = parseInt(val, 10);
+ removeCharacter(index);
 }
 
 function renderEditSelector() {
-  const card = document.getElementById('editSelectorCard');
-  const selector = document.getElementById('editSelector');
+ const card = document.getElementById('editSelectorCard');
+ const selector = document.getElementById('editSelector');
 
-  if (characters.length === 0) {
-    card.style.display = "none";
-    selector.innerHTML = '<option value="new">➕ مسيرة جديدة</option>';
-    return;
-  }
-  card.style.display = "block";
+ if (characters.length === 0) {
+ card.style.display = "none";
+ selector.innerHTML = '<option value="new">مسيرة جديدة</option>';
+ return;
+ }
+ card.style.display = "block";
 
-  const prevValue = selector.value;
-  selector.innerHTML = '<option value="new">➕ مسيرة جديدة</option>' +
-    characters.map((c, i) => `<option value="${i}">${c.marchName}</option>`).join('');
+ const prevValue = selector.value;
+ selector.innerHTML = '<option value="new">مسيرة جديدة</option>' +
+ characters.map((c, i) => `<option value="${i}">${c.marchName}</option>`).join('');
 
-  const stillExists = editingIndex !== null && [...selector.options].some(o => o.value === String(editingIndex));
-  selector.value = stillExists ? editingIndex : (
-    [...selector.options].some(o => o.value === prevValue) ? prevValue : "new"
-  );
+ const stillExists = editingIndex !== null && [...selector.options].some(o =>o.value === String(editingIndex));
+ selector.value = stillExists ? editingIndex : (
+ [...selector.options].some(o =>o.value === prevValue) ? prevValue : "new"
+ );
 
-  document.getElementById('deleteEditSelectedBtn').style.display = (selector.value === "new") ? "none" : "inline-block";
+ document.getElementById('deleteEditSelectedBtn').style.display = (selector.value === "new") ? "none" : "inline-block";
 }
 
 function onEditSelectorChange() {
-  const val = document.getElementById('editSelector').value;
-  document.getElementById('deleteEditSelectedBtn').style.display = (val === "new") ? "none" : "inline-block";
-  if (val === "new") {
-    cancelEdit();
-  } else {
-    editCharacter(parseInt(val, 10));
-  }
+ const val = document.getElementById('editSelector').value;
+ document.getElementById('deleteEditSelectedBtn').style.display = (val === "new") ? "none" : "inline-block";
+ if (val === "new") {
+ cancelEdit();
+ } else {
+ editCharacter(parseInt(val, 10));
+ }
 }
 
 function deleteEditSelectedMarch() {
-  const val = document.getElementById('editSelector').value;
-  if (val === "new") return;
-  removeCharacter(parseInt(val, 10));
+ const val = document.getElementById('editSelector').value;
+ if (val === "new") return;
+ removeCharacter(parseInt(val, 10));
 }
 
 setGearMode('total');
@@ -1544,7 +1622,7 @@ setFormationMode('total');
 // تحميل أي بيانات محفوظة سابقًا من هذا الجهاز/المتصفح، ثم عرضها
 loadFromStorage();
 renderCommanderPresetSelectors();
-[...gearTypes, ...formationTypes, ...inscriptionTypes].forEach(g => renderGenericPresetSelector(g.id));
+[...gearTypes, ...formationTypes, ...inscriptionTypes].forEach(g =>renderGenericPresetSelector(g.id));
 renderList();
 renderAllSectionTotals();
 </script>
