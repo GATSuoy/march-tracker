@@ -50,6 +50,7 @@
  input:focus { outline: none; border-color: #0a84ff; }
  input::placeholder { color: #666; opacity: 1; }
  input[readonly] { color: #9ecbff; background: #1a1a1c; }
+ input.name-duplicate { border-color: #ff453a; }
 
  select {
  width: 100%;
@@ -65,6 +66,89 @@
  .preset-select option[value=""] { color: #666; }
  .preset-select.is-placeholder { color: #666; }
  .preset-select { color: #fff; }
+
+ .preset-search-wrap { position: relative; margin-bottom: 10px; }
+ .preset-search-row { display: flex; gap: 6px; align-items: center; }
+ .preset-search-input {
+ flex: 1;
+ min-width: 0;
+ padding: 10px 11px;
+ border-radius: 10px;
+ border: 1px solid #3a3a3c;
+ background: #1c1c1e;
+ color: #fff;
+ font-size: 16px;
+ margin-bottom: 0;
+ }
+ .preset-search-input:focus { outline: none; border-color: #0a84ff; }
+ .preset-filter-wrap { position: relative; flex-shrink: 0; }
+ .preset-filter-btn {
+ width: 32px;
+ height: 32px;
+ flex-shrink: 0;
+ padding: 0;
+ border-radius: 8px;
+ border: 1px solid #3a3a3c;
+ background: #2c2c2e;
+ color: #999;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ cursor: pointer;
+ }
+ .preset-filter-btn.active { border-color: #0a84ff; color: #0a84ff; }
+ .preset-filter-menu {
+ display: none;
+ position: absolute;
+ top: calc(100% + 4px);
+ left: 0;
+ min-width: 100px;
+ background: #232325;
+ border: 1px solid #3a3a3c;
+ border-radius: 10px;
+ z-index: 31;
+ box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+ overflow: hidden;
+ }
+ .preset-filter-menu.show { display: block; }
+ .preset-filter-item {
+ padding: 9px 12px;
+ font-size: 13px;
+ color: #fff;
+ cursor: pointer;
+ border-bottom: 1px solid #2c2c2e;
+ }
+ .preset-filter-item:last-child { border-bottom: none; }
+ .preset-filter-item:active { background: #2c2c2e; }
+ .preset-search-list {
+ display: none;
+ position: absolute;
+ top: calc(100% + 4px);
+ left: 0;
+ right: 0;
+ max-height: 200px;
+ overflow-y: auto;
+ background: #232325;
+ border: 1px solid #3a3a3c;
+ border-radius: 10px;
+ z-index: 30;
+ box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+ }
+ .preset-search-list.show { display: block; }
+ .preset-search-item {
+ padding: 10px 12px;
+ font-size: 14px;
+ color: #fff;
+ cursor: pointer;
+ border-bottom: 1px solid #2c2c2e;
+ }
+ .preset-search-item:last-child { border-bottom: none; }
+ .preset-search-item:active { background: #2c2c2e; }
+ .preset-search-empty {
+ padding: 10px 12px;
+ font-size: 13px;
+ color: #666;
+ }
 
  .stats-grid {
  display: grid;
@@ -435,6 +519,80 @@
  background: #64d2ff;
  color: #1c1c1e;
  }
+ .dmgtype-toggle {
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr 64px;
+ gap: 6px;
+ margin-bottom: 10px;
+ align-items: stretch;
+ }
+ .dmgtype-btn {
+ height: 38px;
+ padding: 0 4px;
+ border: 2px solid #3a3a3c;
+ border-radius: 10px;
+ background: #2c2c2e;
+ color: #ccc;
+ font-size: 11px;
+ font-weight: 600;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 4px;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ }
+ .dmgtype-btn.active {
+ border-color: #ff9f0a;
+ color: #fff;
+ background: #2c2c2e;
+ }
+ .dmg-amount-input {
+ height: 38px;
+ width: 100%;
+ min-width: 0;
+ padding: 0 4px;
+ border-radius: 10px;
+ border: 2px solid #3a3a3c;
+ background: #2c2c2e;
+ color: #fff;
+ font-size: 13px;
+ text-align: center;
+ }
+ .dmg-amount-input:focus { outline: none; border-color: #ff9f0a; }
+
+ .unittype-toggle {
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr 1fr;
+ gap: 6px;
+ margin-bottom: 10px;
+ }
+ .unittype-btn {
+ height: 38px;
+ padding: 0 4px;
+ border: 2px solid #3a3a3c;
+ border-radius: 10px;
+ background: #2c2c2e;
+ color: #ccc;
+ font-size: 11px;
+ font-weight: 600;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 4px;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ }
+ .unittype-btn .unittype-icon { width: 16px; height: 16px; object-fit: contain; flex-shrink: 0; }
+ .unittype-btn.active {
+ border-color: #34c759;
+ color: #fff;
+ background: #2c2c2e;
+ }
  .tab-content.active { display: block; }
 
  .page-nav {
@@ -602,7 +760,7 @@
 
  <div class="page" id="page-review">
  <div class="card" id="livePreviewCard">
- <div class="section-title" style="border-top:none; padding-top:0; margin-top:0;">الإحصائية الحالية</div>
+ <div class="section-title" style="border-top:none; padding-top:0; margin-top:0;">Current Stats</div>
  <div class="char-stats" id="livePreviewStats"></div>
  <button class="toggle-gear" onclick="toggleGear('live')">عرض تفاصيل الأقسام ▾</button>
  <div class="char-gear-list" id="gearlist-live">
@@ -675,7 +833,7 @@ const inscriptionTypes = Array.from({ length: 8 }, (_, i) => ({
 }));
 
 // يبني حقول إدخال (اسم + إحصائيات) لكل عنصر داخل حاوية معينة
-function buildInputs(containerId, types, statKeys, includeChance = true) {
+function buildInputs(containerId, types, statKeys, includeChance = true, includeDamageType = false) {
  const container = document.getElementById(containerId);
  types.forEach(g => {
  const div = document.createElement('div');
@@ -699,78 +857,162 @@ function buildInputs(containerId, types, statKeys, includeChance = true) {
  <div class="value-chance">${valueField}${chanceField}</div>
  </div>`;
  }).join('');
+ const damageTypeHtml = includeDamageType ? `
+ <div class="dmgtype-toggle" id="${g.id}_dmgtype">
+ <button type="button" class="dmgtype-btn" data-value="skill" onclick="selectDamageType('${g.id}','skill')">مهارة</button>
+ <button type="button" class="dmgtype-btn" data-value="kill" onclick="selectDamageType('${g.id}','kill')">ضربة قاضية</button>
+ <button type="button" class="dmgtype-btn" data-value="group" onclick="selectDamageType('${g.id}','group')">هجوم مجموعة</button>
+ <input type="number" id="${g.id}_dmgAmount" class="dmg-amount-input" placeholder="">
+ </div>` : '';
+ const unitTypeExtraCall = g.id === 'mainCmd' ? ';applyEquipmentLoadoutForMainCommander()' : '';
+ const unitTypeHtml = includeDamageType ? `
+ <div class="unittype-toggle" id="${g.id}_unittype">
+ <button type="button" class="unittype-btn" data-value="infantry" onclick="selectUnitType('${g.id}','infantry')${unitTypeExtraCall}"><img class="unittype-icon" src="data:image/webp;base64,UklGRgoCAABXRUJQVlA4WAoAAAAQAAAAFwAAFwAAQUxQSJ4AAAABcFpt27J8PzKBu03x78JhAK3u7j4JiehQJXuiuaWf85Tv8GEDRIQit42UdOgEC6/YDTM8R95RF8DCxb1BEgBQe8N4ClTZcGvaSmzz0KDItvwPLPdPVnjfinhxf9bUe2U18ViS9wxov9sMGcJShmZueHfoVM4mRKeZgoXsBEwdAjBnmW/fiWuJXQDW3tdI6V9kE4AteUtp4PkextbkAlZQOCBGAQAA8AgAnQEqGAAYAD5tMpVHpCKiISgIAIANiWwNsAQ5QL4QvWIxQ6AmAC6AOkA5732Gv2Z/Zn2jil9eJ35J6SsOHA1JV6fcuKt3bhbZ1d6f1AAA/qnPkUUfA4T2KfKBdsZvZjqTMdIPV0RPjfwm654BwtbGCOgCzAmTVff/ytt/TfPhbSlRBKRw3aATtUjXooFz//J2gW1I25NU5sZ2dTjtCUK9P9L4P//uUDyurV0d92/ays/2tP33Lo+zxD8ZlXc8sOtxxLjGhcJT3Q//8lVjXFsrTdTtVOPiQ5FtgdqLQ4eFT+RAYJ8n4/f/iPENFrVXcLh/+XH7Be1pOawS7GxDzpCPMH2/ZMfmKgNSqn2khJkK/5i/J4u14mtxkLlQGEvYBZ8PPHiZv6AJaxn08Q4N3bUx4lXjww91uL+gKD53/B23JvFQAAA=" alt=""> Infa</button>
+ <button type="button" class="unittype-btn" data-value="archers" onclick="selectUnitType('${g.id}','archers')${unitTypeExtraCall}"><img class="unittype-icon" src="data:image/webp;base64,UklGRvICAABXRUJQVlA4WAoAAAAQAAAAFwAAFwAAQUxQSC8BAAABkHPbtrG9yvdn2/ZX2rZt2yptm3FSsrRt23XyVbGNHdznCSJiAoC4bWXm+Kvh5Pc7TUoAdN28HZRlhJGfEhWg0XjhG8kPp52lvu/lOHKWKXlcQWJK4cC3vST55eaeHUceshKuIQBsVGH3heSrbmMAUJ56suq9PYRbSZ6xhVj3AfdCmE6SCxCbn8uJ9Rco3if37f2eKXC+FgHJdPKRsfHyCwcAXje9IL2DbAVCv1xSRdQ1Z0irveNbHQCdXMi9YA6ZXuQuAFDc9/28HuQmk72/Yebz59VWcqLIYgBK69dkkh83OEnpfWAhoL6tH0qPSH5Zry/CHFdB/1g9gI3kNUdFSKod/Fx/MQsAKnmMZZCpsoZt+N35lVYVZA8zQYAlyNd9PqcoMv2Djg78XeUE/M8AVlA4IJwBAABQCQCdASoYABgAPm0ukkYkIqGhKA1QgA2JbACdMoR3p6f+KvKS5AbYDPgOsA9ADyrf2q+EPyt08B7FPnnfUegx+zIXu21Im4/bfSdvKar2tOwvgAD+8W/2V6p9BixgzrK81s9o3qy+QcWI+f+HDvwgUSzq+4V0lFJjBgUEYjT3C2p5Z5cL2WCspDgSFEn6FDimFaMWI/ehiy3NcB3XmsJzqOGxZdR7+PSmE15+tobZgj9B6pOXlluB/vjOHdcLPvcTSP/y5PDvobvVDIv+fb2pl7GDBPyRr+I+fU2V+v229gBunajXUw1qys1N9kVgLsQzQiDk0xBrM8PqVqgYjXlsQLUKKevsqPwvTeljIkGwr8AmkZ49B4kW//eAVX77yoKl04Oq/Wnjf5GSfbeEIJ2oYz8qPdu5zFB9CKcLJvDj6eX/O6TQ44cckdavxF7LmydzTJlKKNwN5fw2lkENm5AciG3nZVXh0Y0X9vdp4d68bFMK0odRwBE8+Bb7gP/eHrrfedph/hodsd+2qAKcA5bWlh+mfB0+Hvy7UAAA" alt=""> Arch</button>
+ <button type="button" class="unittype-btn" data-value="cavalry" onclick="selectUnitType('${g.id}','cavalry')${unitTypeExtraCall}"><img class="unittype-icon" src="data:image/webp;base64,UklGRowCAABXRUJQVlA4WAoAAAAQAAAAFwAAHQAAQUxQSAsBAAABkGvb1rFnJ7aNip1t207ajFS2LsC27aQySv22bdvmLt7veZ7vEiJiAoipm6ZE8s3BnIJ86oFC+ewCfzbjFcW0vkB6OUaoHcxZbb7s/yxcsuRJ+wXemyYMhaq/4N9XkmG8CuEqSfAriH8yIlJ4CHnWEplC+M874CyR5h8hnAD+6hAtSn4cXNi+wFgB4Eqk1XrmdLcNkeM3RjuARGKb3wezCkA+y+gi2LkAuhjWV8CZBGBPlsdTcP4KB/BVRZLwHbxPIgE80iYiqw/gPpYKPHIgIhoH/2QejlkQEel8FyitbVQhaSIEvRRIdp3Ae2Vitgv0ELuJ8e/OzkC5nwJHquTHQrIeCaeNThSakDAAVlA4IFoBAACwBwCdASoYAB4APmkokEWkIqGb+qwAQAaEtgBOmWXdTIjXZnvKD4A9wW6zUA5kAOJtrSCFM3c9FQRrd0Y0sswMTy596vgAAP7wyi/TOW1FMm0+4ZWHsgs1WUX703UdfKOXJ17O/XVaA9Ok5mt/dP9EO3aNuotTHTWaXl4DyRmq5dpfmSbZZ8vI/S/gvk/BHxr/FU5xzj6qXDspOaI/AucCUHyy+n6FGB9ltWC08xcoJ/+/P7T0lFgGyyQ/3GqfFSn8ddBed/3k/cr4f8oKhjJNjWnkSkPlW2mw1BHsfrGcpYEC6VGSRj+iosmUVm2dvplgl80ALF9vaf+UQCsQfRKgiKbchOFru92YMMWsbblkrOfa/wYV5hlnHTJ5nzLFKmFgb2uUveF2tgf4YGJj4gKlcv7z8p9U/Disr1JSHsbCndaCFMzLnNwOH4mjXIcr1v9G++1L/V/96MAA" alt=""> Cav</button>
+ <button type="button" class="unittype-btn" data-value="engineering" onclick="selectUnitType('${g.id}','engineering')${unitTypeExtraCall}"><img class="unittype-icon" src="data:image/webp;base64,UklGRpICAABXRUJQVlA4WAoAAAAQAAAAFwAAEgAAQUxQSBQBAAABkCvbtmlb49q2ldlmZNv3prbNZ9t+kW3btm3bewQb9xciYgIw+sxddw6Wq2D0IxQvUaQdqwsECRJMVqCyibtVMJ7SSxXUkBxM2ymzXs7nB5X3AigbHs7RvU5hoqDgrSXgTn5yW0hOxhJyQcl5kvcCAejseVSQI/C0Jkxe8JGhalh+rAakHT/wkyuAbHIu5K1rx54jCyBez//Dk1pcRelfSHIzJG0+kOTvCsDlO4XXAn90t7W1tba1vSNf/+f/CAzzXzxiflNhAYK+cxXW8gqAwwoeA9jO45jFH66w/MD1XuKZ/OsB0xfchEiBbze+IOMgdv/LTxufkXnAGIqnQLrhP0kuUgEQt+bMhnTIR64+tTFHBQBWUDggWAEAALAIAJ0BKhgAEwA+bTKVR6QioiEoCACADYlsAJ0yhHSXld3PaCDAbYDmmdRN3l//fI8EIBq0HnP63AuCdjRu9tEfXMW9ZyOGg0U2TPUP3gDo5P9MsgAlZmgkxGygLh7KM1EZ0oNt98xOWAWmZwa4N09/0eIl70n2y7z4ZR7/JA9p9NeYVw90LgkXshmHwBehfu9Lj1+QHHbdW1c/SMKDR9zcPeBF3aztKiGBa5RSZAze8mlHHtXOl81cTfQXxc/kOjHwc/JoXJgXCrwy6fVzj4ez17piT+l7qlQU69lbjpkxKxVnuRFUjtN/AjR6Mvb2NEbf3Eo/+P0GGp3ln2waeC2pY2GM41L7spHC9VwJYeYIS2XSG5KzINrBtQ4zIIAR6HZ9XhF3mqO4Ent724CNl1fXLziipCMg44dbPvk+u913qLTCTcKqWU6UNnfaiw8EpHgRzjPv0AAA" alt=""> Eng</button>
+ </div>` : '';
  div.innerHTML = `
  <div class="gear-name">${g.label}</div>
  <input type="text" id="${g.id}_name" placeholder="${g.placeholder}">
+ ${damageTypeHtml}
+ ${unitTypeHtml}
  <div class="stats-grid">${statsHtml}</div>
  `;
  container.appendChild(div);
  });
 }
 
-buildInputs('commanderContainer', commanderTypes, commanderStatKeys);
+buildInputs('commanderContainer', commanderTypes, commanderStatKeys, true, true);
+
+// يبدّل زر نوع الضرر المحدد لقائد معيّن (مهارة / ضربة قاضية / هجوم مجموعة)
+function selectDamageType(id, value) {
+ const wrap = document.getElementById(id + '_dmgtype');
+ if (!wrap) return;
+ wrap.dataset.value = value;
+ wrap.querySelectorAll('.dmgtype-btn').forEach(btn => {
+ btn.classList.toggle('active', btn.dataset.value === value);
+ });
+}
+
+// يبدّل زر نوع الوحدات المحدد لقائد معيّن (مشاة / رماة / فرسان)
+function selectUnitType(id, value) {
+ const wrap = document.getElementById(id + '_unittype');
+ if (!wrap) return;
+ wrap.dataset.value = value;
+ wrap.querySelectorAll('.unittype-btn').forEach(btn => {
+ btn.classList.toggle('active', btn.dataset.value === value);
+ });
+}
 
 // قائمة القادة المحفوظين (اسم + إحصائيات) لإعادة استخدامها لاحقًا بدل إعادة الكتابة
 let savedCommanders = [];
 
 function buildCommanderPresetUI(g, statKeys) {
  const wrap = document.createElement('div');
- wrap.style.marginBottom = '10px';
+ wrap.className = 'preset-search-wrap';
+ wrap.id = g.id + '_presetWrap';
  wrap.innerHTML = `
- <select id="${g.id}_preset" class="preset-select is-placeholder" style="margin-bottom:0;" onchange="applyCommanderPreset('${g.id}')">
- <option value="" disabled selected>اختر</option>
- </select>
+ <div class="preset-search-row">
+ <input type="text" id="${g.id}_presetSearch" class="preset-search-input" placeholder="اختر" autocomplete="off">
+ <div class="preset-filter-wrap" id="${g.id}_presetFilterWrap">
+ <button type="button" class="preset-filter-btn" id="${g.id}_presetFilterBtn" data-value="">
+ <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+ </button>
+ <div class="preset-filter-menu" id="${g.id}_presetFilterMenu">
+ <div class="preset-filter-item" data-value="">الكل</div>
+ <div class="preset-filter-item" data-value="infantry">Infa</div>
+ <div class="preset-filter-item" data-value="archers">Arch</div>
+ <div class="preset-filter-item" data-value="cavalry">Cav</div>
+ <div class="preset-filter-item" data-value="engineering">Eng</div>
+ </div>
+ </div>
+ </div>
+ <div class="preset-search-list" id="${g.id}_presetList"></div>
  `;
  document.getElementById(g.id + '_name').insertAdjacentElement('beforebegin', wrap);
+
+ const input = wrap.querySelector('.preset-search-input');
+ const filterBtn = wrap.querySelector('.preset-filter-btn');
+ const filterMenu = wrap.querySelector('.preset-filter-menu');
+ const list = wrap.querySelector('.preset-search-list');
+ input.addEventListener('input', () =>renderCommanderPresetList(g.id));
+ input.addEventListener('focus', () =>renderCommanderPresetList(g.id));
+ filterBtn.addEventListener('click', e => {
+ e.stopPropagation();
+ filterMenu.classList.toggle('show');
+ });
+ filterMenu.addEventListener('click', e => {
+ const item = e.target.closest('.preset-filter-item');
+ if (!item) return;
+ const value = item.dataset.value;
+ filterBtn.dataset.value = value;
+ filterBtn.classList.toggle('active', !!value);
+ filterMenu.classList.remove('show');
+ renderCommanderPresetList(g.id);
+ });
+ list.addEventListener('click', e => {
+ const item = e.target.closest('.preset-search-item');
+ if (!item || !item.dataset.name) return;
+ selectCommanderFromSearch(g.id, item.dataset.name);
+ });
 }
 
 commanderTypes.forEach(g =>buildCommanderPresetUI(g, commanderStatKeys));
 
-const autoSaveTimers = {};
-
-// يحفظ (أو يحدّث) بيانات القائد تلقائيًا بعد توقف قصير عن الكتابة، بدون أي تأكيد أو تنبيه
-function scheduleAutoSaveCommander(id) {
- clearTimeout(autoSaveTimers[id]);
- autoSaveTimers[id] = setTimeout(() =>autoSaveCommanderPreset(id), 600);
-}
-
-function autoSaveCommanderPreset(id) {
- const name = document.getElementById(id + '_name').value.trim();
- if (!name) return;
-
- const preset = { name };
- commanderStatKeys.forEach(k => {
- preset[STAT_DEFS[k].key] = num(id + '_' + k);
- preset[STAT_DEFS[k].key + 'Chance'] = num(id + '_' + k + '_chance');
- });
-
- const existingIdx = savedCommanders.findIndex(p =>p.name === name);
- if (existingIdx !== -1) savedCommanders[existingIdx] = preset;
- else savedCommanders.push(preset);
-
- renderCommanderPresetSelectors();
- // نحافظ على القائد المختار حاليًا في القائمة كما هو بعد التحديث
- document.getElementById(id + '_preset').value = name;
-}
-
-commanderTypes.forEach(g => {
- const fieldIds = [g.id + '_name', ...commanderStatKeys.flatMap(k => [g.id + '_' + k, g.id + '_' + k + '_chance'])];
- fieldIds.forEach(fid => {
- const el = document.getElementById(fid);
- if (el) el.addEventListener('input', () =>scheduleAutoSaveCommander(g.id));
+// يغلق قائمة نتائج البحث وقائمة الفلترة عند الضغط خارجهما
+document.addEventListener('click', e => {
+ commanderTypes.forEach(g => {
+ const wrap = document.getElementById(g.id + '_presetWrap');
+ if (wrap && !wrap.contains(e.target)) {
+ const list = document.getElementById(g.id + '_presetList');
+ if (list) list.classList.remove('show');
+ const filterMenu = document.getElementById(g.id + '_presetFilterMenu');
+ if (filterMenu) filterMenu.classList.remove('show');
+ }
  });
 });
 
-function applyCommanderPreset(id) {
- const selector = document.getElementById(id + '_preset');
- const name = selector.value;
- if (!name) return;
+function escapeHtml(str) {
+ return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+// يعرض قائمة القادة المحفوظين المطابقين لما كُتب في خانة البحث ونوع الوحدة المختار
+function renderCommanderPresetList(id) {
+ const input = document.getElementById(id + '_presetSearch');
+ const filterBtn = document.getElementById(id + '_presetFilterBtn');
+ const list = document.getElementById(id + '_presetList');
+ if (!input || !list) return;
+ const q = input.value.trim().toLowerCase();
+ const unitType = filterBtn ? filterBtn.dataset.value : '';
+ const matches = savedCommanders.filter(p => {
+ const matchesQuery = !q || p.name.toLowerCase().includes(q);
+ const matchesType = !unitType || p.unitType === unitType;
+ return matchesQuery && matchesType;
+ });
+ if (matches.length === 0) {
+ list.innerHTML = '<div class="preset-search-empty">لا نتائج</div>';
+ } else {
+ list.innerHTML = matches.map(p =>`<div class="preset-search-item" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</div>`).join('');
+ }
+ list.classList.add('show');
+}
+
+// يعبّي بيانات القائد المختار من نتائج البحث في خانات الإدخال
+function selectCommanderFromSearch(id, name) {
  const preset = savedCommanders.find(p =>p.name === name);
  if (!preset) return;
 
- selector.classList.remove('is-placeholder');
+ const input = document.getElementById(id + '_presetSearch');
+ const list = document.getElementById(id + '_presetList');
+ if (input) input.value = name;
+ if (list) list.classList.remove('show');
 
  document.getElementById(id + '_name').value = preset.name;
+ if (preset.damageType) selectDamageType(id, preset.damageType);
+ if (preset.unitType) selectUnitType(id, preset.unitType);
+ const dmgAmountEl = document.getElementById(id + '_dmgAmount');
+ if (dmgAmountEl) dmgAmountEl.value = preset.damageAmount || "";
  commanderStatKeys.forEach(k => {
  document.getElementById(id + '_' + k).value = preset[STAT_DEFS[k].key];
  document.getElementById(id + '_' + k + '_chance').value = preset[STAT_DEFS[k].key + 'Chance'];
@@ -780,17 +1022,44 @@ function applyCommanderPreset(id) {
  renderAllSectionTotals();
 }
 
-function renderCommanderPresetSelectors() {
- commanderTypes.forEach(g => {
- const selector = document.getElementById(g.id + '_preset');
- if (!selector) return;
- const prevValue = selector.value;
- selector.innerHTML = '<option value="" disabled>اختر</option>' +
- savedCommanders.map(p => `<option value="${p.name}">${p.name}</option>`).join('');
- const stillExists = savedCommanders.some(p =>p.name === prevValue);
- selector.value = stillExists ? prevValue : "";
- selector.classList.toggle('is-placeholder', !stillExists);
+// يحفظ (أو يحدّث) بيانات القائد في قائمة القادة المحفوظين
+function autoSaveCommanderPreset(id) {
+ const nameEl = document.getElementById(id + '_name');
+ const name = nameEl.value.trim();
+ if (!name) { nameEl.classList.remove('name-duplicate'); return; }
+
+ const searchInput = document.getElementById(id + '_presetSearch');
+ const existingIdx = savedCommanders.findIndex(p =>p.name === name);
+
+ // امنع حفظ الاسم إذا كان مستخدمًا مسبقًا لقائد محفوظ آخر غير المحدد حاليًا في هذه الخانة
+ if (existingIdx !== -1 && (!searchInput || searchInput.value !== name)) {
+ nameEl.classList.add('name-duplicate');
+ return;
+ }
+ nameEl.classList.remove('name-duplicate');
+
+ const dmgTypeEl = document.getElementById(id + '_dmgtype');
+ const unitTypeEl = document.getElementById(id + '_unittype');
+ const preset = {
+ name,
+ damageType: dmgTypeEl ? (dmgTypeEl.dataset.value || null) : null,
+ damageAmount: num(id + '_dmgAmount') || null,
+ unitType: unitTypeEl ? (unitTypeEl.dataset.value || null) : null
+ };
+ commanderStatKeys.forEach(k => {
+ preset[STAT_DEFS[k].key] = num(id + '_' + k);
+ preset[STAT_DEFS[k].key + 'Chance'] = num(id + '_' + k + '_chance');
  });
+
+ if (existingIdx !== -1) savedCommanders[existingIdx] = preset;
+ else savedCommanders.push(preset);
+
+ renderCommanderPresetSelectors();
+ // نحافظ على القائد المختار حاليًا في خانة البحث كما هو بعد التحديث
+ if (searchInput) searchInput.value = name;
+}
+
+function renderCommanderPresetSelectors() {
  saveToStorage();
 }
 
@@ -851,6 +1120,32 @@ function setGearMode(mode) {
  fullStatKeys.forEach(k =>gearTotalManual[k] = false);
  renderGearTotalInputs();
  }
+}
+
+// طقم معدات جاهز (Codex Helper)، بحسب نوع الوحدات: مشاة / رماة / فرسان
+// (Siege Defense +3% غير مدرجة لعدم وجود فئة "حصار" في البرنامج، وMarch Speed +10% مشتركة بين الأنواع)
+const EQUIPMENT_LOADOUT_BY_UNIT = {
+ infantry: { attack: 47, defense: 29, health: 0, speed: 10, dmgup: 0, dmgdown: 0 },
+ archers: { attack: 5, defense: 13, health: 4, speed: 10, dmgup: 0, dmgdown: 0 },
+ cavalry: { attack: 8, defense: 6, health: 3, speed: 10, dmgup: 0, dmgdown: 0 }
+};
+
+// يعبّي صندوق "مجموع المعدات" تلقائيًا حسب نوع وحدات القائد الأساسي (Primary)
+function applyEquipmentLoadoutForMainCommander() {
+ const wrap = document.getElementById('mainCmd_unittype');
+ const unitType = wrap ? wrap.dataset.value : null;
+ const loadout = EQUIPMENT_LOADOUT_BY_UNIT[unitType];
+ if (!loadout) return;
+
+ setGearMode('total');
+ fullStatKeys.forEach(k => {
+ const input = document.getElementById('gearTotal_' + k);
+ if (input) {
+ input.value = loadout[k];
+ gearTotalManual[k] = true;
+ }
+ });
+ renderAllSectionTotals();
 }
 
 buildInputs('formationContainer', formationTypes, fullStatKeys, false);
@@ -947,6 +1242,8 @@ function buildGenericPresetUI(g, poolKey) {
  `;
  document.getElementById(g.id + '_name').insertAdjacentElement('beforebegin', wrap);
 }
+
+const autoSaveTimers = {};
 
 function scheduleAutoSaveGeneric(id) {
  clearTimeout(autoSaveTimers[id]);
@@ -1101,8 +1398,10 @@ function renderLivePreview() {
 
  const commanderRows = renderItemRows(c.commanders, commanderStatKeys);
  const gearRows = renderItemRows(c.gear, fullStatKeys);
- const formationRows = renderItemRows(c.formations, fullStatKeys);
- const inscriptionRows = renderItemRows(c.inscriptions, fullStatKeys);
+ const addedFormations = c.formations.filter(it => it.name !== "—");
+ const formationRows = renderItemRows(addedFormations, fullStatKeys);
+ const addedInscriptions = c.inscriptions.filter(it => it.name !== "—");
+ const inscriptionRows = renderItemRows(addedInscriptions, fullStatKeys);
 
  const commanderSubtotal = computeItemsSubtotal(c.commanders, commanderStatKeys);
  const gearSubtotal = {
@@ -1113,13 +1412,13 @@ function renderLivePreview() {
  attack: c.formationTotals.attack, defense: c.formationTotals.defense, health: c.formationTotals.health,
  speed: c.formationTotals.speed, dmgup: c.formationTotals.dmgUp, dmgdown: c.formationTotals.dmgDown
  };
- const inscriptionSubtotal = computeItemsSubtotal(c.inscriptions, fullStatKeys);
+ const inscriptionSubtotal = computeItemsSubtotal(addedInscriptions, fullStatKeys);
 
  detailsEl.innerHTML = `
  ${renderSectionDetail('Skills', commanderSubtotal, commanderStatKeys, commanderRows)}
  ${renderSectionDetail('المعدات', gearSubtotal, fullStatKeys, gearRows)}
- ${renderSectionDetail('التشكيل', formationSubtotal, fullStatKeys, formationRows)}
- ${renderSectionDetail('النقوش', inscriptionSubtotal, fullStatKeys, inscriptionRows)}
+ ${addedFormations.length ? renderSectionDetail('التشكيل', formationSubtotal, fullStatKeys, formationRows) : ''}
+ ${addedInscriptions.length ? renderSectionDetail('النقوش', inscriptionSubtotal, fullStatKeys, inscriptionRows) : ''}
  `;
 }
 
@@ -1213,7 +1512,16 @@ function num(id) {
 // يجمع بيانات مجموعة عناصر (قادة/معدات/تشكيل/نقوش) من الحقول، ويضيف مساهمتها لمجاميع المسيرة
 function collectItems(types, statKeys, totals) {
  return types.map(g => {
- const item = { label: g.label, name: document.getElementById(g.id + '_name').value.trim() || "—" };
+ const dmgTypeEl = document.getElementById(g.id + '_dmgtype');
+ const dmgAmountEl = document.getElementById(g.id + '_dmgAmount');
+ const unitTypeEl = document.getElementById(g.id + '_unittype');
+ const item = {
+ label: g.label,
+ name: document.getElementById(g.id + '_name').value.trim() || "—",
+ damageType: dmgTypeEl ? (dmgTypeEl.dataset.value || null) : null,
+ damageAmount: dmgAmountEl ? (num(g.id + '_dmgAmount') || null) : null,
+ unitType: unitTypeEl ? (unitTypeEl.dataset.value || null) : null
+ };
  statKeys.forEach(k => {
  const d = STAT_DEFS[k];
  const val = num(g.id + '_' + k);
@@ -1231,7 +1539,19 @@ function resetForm() {
  document.getElementById('formationType').value = "اختر";
  [...commanderTypes, ...gearTypes, ...formationTypes, ...inscriptionTypes].forEach(g => {
  const nameEl = document.getElementById(g.id + '_name');
- if (nameEl) nameEl.value = "";
+ if (nameEl) { nameEl.value = ""; nameEl.classList.remove('name-duplicate'); }
+ const dmgTypeEl = document.getElementById(g.id + '_dmgtype');
+ if (dmgTypeEl) {
+ delete dmgTypeEl.dataset.value;
+ dmgTypeEl.querySelectorAll('.dmgtype-btn').forEach(btn => btn.classList.remove('active'));
+ }
+ const dmgAmountEl = document.getElementById(g.id + '_dmgAmount');
+ if (dmgAmountEl) dmgAmountEl.value = "";
+ const unitTypeEl = document.getElementById(g.id + '_unittype');
+ if (unitTypeEl) {
+ delete unitTypeEl.dataset.value;
+ unitTypeEl.querySelectorAll('.unittype-btn').forEach(btn => btn.classList.remove('active'));
+ }
  });
  Object.keys(STAT_DEFS).forEach(k => {
  [...commanderTypes, ...gearTypes, ...formationTypes, ...inscriptionTypes].forEach(g => {
@@ -1247,6 +1567,10 @@ function resetForm() {
  presetEl.value = "";
  presetEl.classList.add('is-placeholder');
  }
+ const presetSearchEl = document.getElementById(g.id + '_presetSearch');
+ if (presetSearchEl) presetSearchEl.value = "";
+ const presetListEl = document.getElementById(g.id + '_presetList');
+ if (presetListEl) presetListEl.classList.remove('show');
  });
  fullStatKeys.forEach(k => {
  gearTotalManual[k] = false;
@@ -1323,6 +1647,9 @@ function buildRecordFromForm() {
 function addCharacter() {
  const record = buildRecordFromForm();
 
+ // يحفظ القادة في قائمة القادة المحفوظين عند حفظ المسيرة
+ commanderTypes.forEach(g =>autoSaveCommanderPreset(g.id));
+
  if (editingIndex !== null) {
  characters[editingIndex] = record;
  } else {
@@ -1342,6 +1669,10 @@ function fillItemInputs(types, statKeys, data) {
  types.forEach((g, idx) => {
  const d = data[idx];
  document.getElementById(g.id + '_name').value = d.name === "—" ? "" : d.name;
+ if (d.damageType) selectDamageType(g.id, d.damageType);
+ if (d.unitType) selectUnitType(g.id, d.unitType);
+ const dmgAmountEl = document.getElementById(g.id + '_dmgAmount');
+ if (dmgAmountEl) dmgAmountEl.value = d.damageAmount || "";
  statKeys.forEach(k => {
  document.getElementById(g.id + '_' + k).value = d[STAT_DEFS[k].key];
  const chanceEl = document.getElementById(g.id + '_' + k + '_chance');
@@ -1415,9 +1746,16 @@ function renderItemRows(items, statKeys) {
  const chanceTxt = chance ? ` <small style="opacity:.6">(${chance}%)</small>` : '';
  return `<div class="mini ${d.cls}"><div class="k">${d.label.replace(/^[^\s]+\s/, '')}</div><div class="v">${g[d.key]}${chanceTxt}</div></div>`;
  }).join('');
+ const DMG_TYPE_LABELS = { skill: 'مهارة', kill: 'ضربة قاضية', group: 'هجوم مجموعة' };
+ const UNIT_TYPE_LABELS = { infantry: 'Infa', archers: 'Arch', cavalry: 'Cav', engineering: 'Eng' };
+ const dmgTypeLabel = g.damageType ? (DMG_TYPE_LABELS[g.damageType] || g.damageType) : '';
+ const dmgAmountLabel = g.damageAmount ? ` - ${g.damageAmount}` : '';
+ const unitTypeLabel = g.unitType ? (UNIT_TYPE_LABELS[g.unitType] || g.unitType) : '';
+ const badgeParts = [dmgTypeLabel ? `${dmgTypeLabel}${dmgAmountLabel}` : '', unitTypeLabel].filter(Boolean);
+ const dmgTypeTxt = badgeParts.length ? ` <small style="opacity:.6">(${badgeParts.join(' | ')})</small>` : '';
  return `
  <div class="gear-row">
- <div class="gear-row-name">${g.label}: ${g.name}</div>
+ <div class="gear-row-name">${g.label}: ${g.name}${dmgTypeTxt}</div>
  <div class="gear-row-stats">${statsHtml}</div>
  </div>`;
  }).join('');
@@ -1495,8 +1833,10 @@ function renderList() {
 
  const commanderRows = renderItemRows(c.commanders, commanderStatKeys);
  const gearRows = renderItemRows(c.gear, fullStatKeys);
- const formationRows = renderItemRows(c.formations, fullStatKeys);
- const inscriptionRows = renderItemRows(c.inscriptions, fullStatKeys);
+ const addedFormations = c.formations.filter(it => it.name !== "—");
+ const formationRows = renderItemRows(addedFormations, fullStatKeys);
+ const addedInscriptions = c.inscriptions.filter(it => it.name !== "—");
+ const inscriptionRows = renderItemRows(addedInscriptions, fullStatKeys);
 
  const commanderSubtotal = computeItemsSubtotal(c.commanders, commanderStatKeys);
  const gearSubtotal = c.gearTotals ? {
@@ -1507,7 +1847,7 @@ function renderList() {
  attack: c.formationTotals.attack, defense: c.formationTotals.defense, health: c.formationTotals.health,
  speed: c.formationTotals.speed, dmgup: c.formationTotals.dmgUp, dmgdown: c.formationTotals.dmgDown
  } : computeItemsSubtotal(c.formations, fullStatKeys);
- const inscriptionSubtotal = computeItemsSubtotal(c.inscriptions, fullStatKeys);
+ const inscriptionSubtotal = computeItemsSubtotal(addedInscriptions, fullStatKeys);
 
  div.innerHTML = `
  <div class="char-head">
@@ -1518,7 +1858,7 @@ function renderList() {
  <button class="char-del" onclick="removeCharacter(${i})"></button>
  </div>
  </div>
- <div class="section-title" style="border-top:none; padding-top:0; margin-top:0;">الإحصائية الكاملة</div>
+ <div class="section-title" style="border-top:none; padding-top:0; margin-top:0;">Full Stats</div>
  <div class="char-stats">
  <div class="mini attack"><div class="k">ATK</div><div class="v">${c.attack}</div></div>
  <div class="mini defense"><div class="k">DEF</div><div class="v">${c.defense}</div></div>
@@ -1532,8 +1872,8 @@ function renderList() {
  <button class="toggle-items" onclick="toggleItems(${i})">إظهار عناصر كل قسم ▾</button>
  ${renderSectionDetail('Skills', commanderSubtotal, commanderStatKeys, commanderRows)}
  ${renderSectionDetail('المعدات', gearSubtotal, fullStatKeys, gearRows)}
- ${renderSectionDetail('التشكيل', formationSubtotal, fullStatKeys, formationRows)}
- ${renderSectionDetail('النقوش', inscriptionSubtotal, fullStatKeys, inscriptionRows)}
+ ${addedFormations.length ? renderSectionDetail('التشكيل', formationSubtotal, fullStatKeys, formationRows) : ''}
+ ${addedInscriptions.length ? renderSectionDetail('النقوش', inscriptionSubtotal, fullStatKeys, inscriptionRows) : ''}
  </div>
  `;
  list.appendChild(div);
@@ -1621,6 +1961,104 @@ setFormationMode('total');
 
 // تحميل أي بيانات محفوظة سابقًا من هذا الجهاز/المتصفح، ثم عرضها
 loadFromStorage();
+
+// إضافة قائد جاهز (YSG) للقائمة المنسدلة إذا لم يكن موجودًا مسبقًا
+if (!savedCommanders.some(p =>p.name === "YSG")) {
+ savedCommanders.push({
+ name: "YSG",
+ attack: 0, defense: 0, health: 0, speed: 0, dmgUp: 0, dmgDown: 0,
+ attackChance: 0, defenseChance: 0, healthChance: 0, speedChance: 0, dmgUpChance: 0, dmgDownChance: 0,
+ damageType: "skill",
+ damageAmount: 1400,
+ unitType: "archers"
+ });
+}
+
+// إضافة قائد جاهز (Liu Che) للقائمة المنسدلة إذا لم يكن موجودًا مسبقًا
+if (!savedCommanders.some(p =>p.name === "Liu Che")) {
+ savedCommanders.push({
+ name: "Liu Che",
+ attack: 20, defense: 20, health: 0, speed: 20, dmgUp: 0, dmgDown: 20,
+ attackChance: 0, defenseChance: 0, healthChance: 0, speedChance: 0, dmgUpChance: 0, dmgDownChance: 0,
+ damageType: "kill",
+ damageAmount: 2250,
+ unitType: "infantry"
+ });
+}
+
+// يحذف أي نسخة قديمة محفوظة بالاسم العربي "ارثر" إن وجدت (تم استبدالها بالاسم الإنجليزي Arthur)
+savedCommanders = savedCommanders.filter(p =>p.name !== "ارثر");
+
+// إضافة قائد جاهز (Arthur) للقائمة المنسدلة إذا لم يكن موجودًا مسبقًا
+if (!savedCommanders.some(p =>p.name === "Arthur")) {
+ savedCommanders.push({
+ name: "Arthur",
+ attack: 30, defense: 0, health: 20, speed: 20, dmgUp: 0, dmgDown: 0,
+ attackChance: 0, defenseChance: 0, healthChance: 0, speedChance: 0, dmgUpChance: 0, dmgDownChance: 0,
+ damageType: "group",
+ damageAmount: 1400,
+ unitType: "cavalry"
+ });
+}
+
+// قائمة القادة الافتراضية (اسم + نوع الوحدات فقط)، تُضاف للقائمة المنسدلة إذا لم تكن موجودة مسبقًا
+const DEFAULT_COMMANDER_ROSTER = [
+ { name: "Alexander Nevsky", unitType: "cavalry" },
+ { name: "Attila", unitType: "cavalry" },
+ { name: "Bertrand du Guesclin", unitType: "cavalry" },
+ { name: "Cao Cao", unitType: "cavalry" },
+ { name: "Huo Qubing", unitType: "cavalry" },
+ { name: "Jan Žižka", unitType: "cavalry" },
+ { name: "Joan of Arc Prime", unitType: "cavalry" },
+ { name: "Justinian I", unitType: "cavalry" },
+ { name: "Minamoto no Yoshitsune", unitType: "cavalry" },
+ { name: "Saladin", unitType: "cavalry" },
+ { name: "Takeda Shingen", unitType: "cavalry" },
+ { name: "William I", unitType: "cavalry" },
+ { name: "Xiang Yu", unitType: "cavalry" },
+ { name: "Alexander the Great", unitType: "infantry" },
+ { name: "Charles Martel", unitType: "infantry" },
+ { name: "Cheok Jun-gyeong", unitType: "infantry" },
+ { name: "Constantine I", unitType: "infantry" },
+ { name: "Gorgo", unitType: "infantry" },
+ { name: "Guan Yu", unitType: "infantry" },
+ { name: "Leonidas I", unitType: "infantry" },
+ { name: "Pakal", unitType: "infantry" },
+ { name: "Pyrrhus", unitType: "infantry" },
+ { name: "Richard I", unitType: "infantry" },
+ { name: "Sargon the Great", unitType: "infantry" },
+ { name: "Scipio Africanus Prime", unitType: "infantry" },
+ { name: "Tariq ibn Ziyad", unitType: "infantry" },
+ { name: "Zenobia", unitType: "infantry" },
+ { name: "Amanitore", unitType: "archers" },
+ { name: "Artemisia I", unitType: "archers" },
+ { name: "Ashurbanipal", unitType: "archers" },
+ { name: "Boudica Prime", unitType: "archers" },
+ { name: "Cyrus the Great", unitType: "archers" },
+ { name: "Edward of Woodstock", unitType: "archers" },
+ { name: "El Cid", unitType: "archers" },
+ { name: "Gilgamesh", unitType: "archers" },
+ { name: "Henry V", unitType: "archers" },
+ { name: "Hermann Prime", unitType: "archers" },
+ { name: "Nebuchadnezzar II", unitType: "archers" },
+ { name: "Ramses II", unitType: "archers" },
+ { name: "Tomyris", unitType: "archers" },
+ { name: "Zhuge Liang", unitType: "archers" }
+];
+
+DEFAULT_COMMANDER_ROSTER.forEach(c => {
+ if (!savedCommanders.some(p =>p.name === c.name)) {
+ savedCommanders.push({
+ name: c.name,
+ attack: 0, defense: 0, health: 0, speed: 0, dmgUp: 0, dmgDown: 0,
+ attackChance: 0, defenseChance: 0, healthChance: 0, speedChance: 0, dmgUpChance: 0, dmgDownChance: 0,
+ damageType: null,
+ damageAmount: null,
+ unitType: c.unitType
+ });
+ }
+});
+
 renderCommanderPresetSelectors();
 [...gearTypes, ...formationTypes, ...inscriptionTypes].forEach(g =>renderGenericPresetSelector(g.id));
 renderList();
